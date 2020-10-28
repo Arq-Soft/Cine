@@ -1,0 +1,130 @@
+/*MoviesCatalogue*/
+.movie-cover {
+  width: 200px;
+  height: 300px;
+  margin: auto;
+}
+.movie-synopsis {
+  text-align: justify;
+}
+h5 {
+  font-weight: bold;
+}
+
+/*Main Components*/
+a{
+	color: #002a56;
+}
+span {
+  color:#002a56;
+  font-weight: bold;
+}
+#main {
+  width: 940px;
+  margin: 0 auto;
+  font-size: 0.875em;
+}
+#header {
+  height: 171px;
+  margin-bottom: -8px;
+}
+.fleft {
+  float: left;
+}
+#header .row-1 {
+  width: 100%;
+  overflow: hidden;
+}
+#header .row-1 .fleft {
+  font-size: 60px;
+  line-height: 1.2em;
+  padding: 26px 0 0 20px;
+  padding-left: 150px;
+}
+#header .row-1 .fleft a {
+  text-decoration: none;
+}
+#header .row-1 ul {
+  padding: 49px 60px 0 0;
+  float: right;
+}
+#header .row-1 ul li {
+  float: left;
+  padding-left: 54px;
+}
+#header .row-2 {
+  height: 51px;
+}
+#header .row-2 ul {
+  width: 100%;
+  overflow: hidden;
+}
+#header .row-2 ul li {
+  float: left;
+  font-size: 20px;
+  line-height: 2.4em;
+  margin-right: 3px;
+  background-color: #002a56;
+  list-style:none;
+}
+#header .row-2 ul li.last {
+  margin-right: 0;
+}
+#header .row-2 ul li a {
+  text-decoration: none;
+  color: white;
+  width: 200px;
+  height: 50px;
+  float: left;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  text-align: center;
+}
+#header .row-2 ul li a:hover,
+#header .row-2 ul li a.active {
+    color: #6493ad;
+}
+
+
+
+/*LoginComponent*/
+.card {
+  height: 370px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+.card-header h3 {
+  color: white;
+}
+.card-footer a {
+	margin-left: 10px;
+	color: #002a56;
+  }
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.input-group-prepend span {
+  width: 50px;
+  background-color: #002a56;
+  color: black;
+  border: 0 !important;
+}
+.login_btn {
+  color: white;
+  background-color: #002a56;
+  width: 100px;
+}
+.links {
+  color: white;
+}
