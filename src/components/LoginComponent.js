@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {PersonaService} from '../services/PersonaService';
 
 class LoginComponent extends Component {
   constructor(props) {
@@ -6,11 +7,16 @@ class LoginComponent extends Component {
     this.state = {
       username: "",
       password: "",
+      isFetch: true,
+      Personas: []
     };
+    this.PersonaService = new PersonaService();
   }
-  handleSubmit(event) {
-    alert("A name was submitted: " + this.state.value);
-    event.preventDefault();
+
+  componentDidMount(){
+    this.PersonaService.getAll.then(data =>{
+      console.log(data);
+    })
   }
   render() {
     return (
@@ -32,8 +38,8 @@ class LoginComponent extends Component {
                     type="text"
                     className="form-control"
                     placeholder="Username"
-                    onChange={(_event, newValue) =>
-                      this.setState({ username: newValue })
+                    onChange={(_event, Username) =>
+                      this.setState({ username: Username })
                     }
                   />
                 </div>
@@ -47,8 +53,8 @@ class LoginComponent extends Component {
                     type="password"
                     className="form-control"
                     placeholder="Password"
-                    onChange={(_event, newValue) =>
-                      this.setState({ password: newValue })
+                    onChange={(_event, Password) =>
+                      this.setState({ password: Password })
                     }
                   />
                 </div>
@@ -63,7 +69,8 @@ class LoginComponent extends Component {
             </div>
             <div className="card-footer">
               <div className="d-flex justify-content-center links">
-                Don't have an account?<a href="https://github.com/acz369/CourseraReact">Sign Up</a>
+                Don't have an account?
+                <a href="https://github.com/Arq-Soft/Cine">Sign Up</a>
               </div>
             </div>
           </div>

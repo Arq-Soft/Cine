@@ -1,11 +1,22 @@
 import React, { Component } from "react";
 import { Media } from "reactstrap";
+import {MoviesService} from '../services/MoviesService';
 
 class MoviesCatalogue extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      Movies: []
+    };
+    this.MoviesService = new MoviesService();
   }
+
+  componentDidMount(){
+    this.MoviesService.getAll.then(data =>{
+      console.log(data);
+    })
+  }
+
   render() {
     const catalogue = this.props.movies.map((movie) => {
       return (

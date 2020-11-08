@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <LoginComponent Login={this.state.Login} />
+        {/*<LoginComponent Login={this.state.Login} />*/}
         <MainComponents main={this.state.main} />
         <div className="container">
           <div id="main"><div id="header">
