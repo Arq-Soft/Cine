@@ -1,0 +1,5 @@
+com\arquisoft\cine\model\User.class
+com\arquisoft\cine\repository\UserRepository.class
+com\arquisoft\cine\controller\UserController.class
+com\arquisoft\cine\service\UserService.class
+com\arquisoft\cine\CineApplication.class

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,9 +27,9 @@ public class User {
     @GeneratedValue
     private int id;
     
-    @Column(name = "REGIST_DATE", updatable = false, nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp registDate;
+    @Column(name = "REGIST_DATE")
+    private Date registDate;
 
     private String email;
     private String password;
@@ -40,7 +40,7 @@ public class User {
         return id;
     }
 
-    public Timestamp getRegistDate() {
+    public Date getRegistDate() {
         return registDate;
     }
 
