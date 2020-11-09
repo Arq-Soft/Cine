@@ -5,6 +5,7 @@ export class PersonaService{
 
     /* Here we get all the people consuming the api */
     getAll(){
-        return axios.get(this.baseUrl + "Users").then(res => res.data)
+        return axios.get(this.baseUrl + "Users").then(res => {
+            console.log(res.data)})
     }
 }

@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import Header from './HeaderComponent';
+import React, { Component } from "react"
 
 class MainComponents extends Component {
   constructor(props) {
@@ -11,7 +10,6 @@ class MainComponents extends Component {
         <div className="tail-top">
         <div className="tail-bottom">
           <div id="main">
-          <Header/>
             <div id="content">
               <div id="slogan">
                 <div className="image png"></div>

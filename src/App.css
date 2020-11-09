@@ -128,3 +128,59 @@ span {
 .links {
   color: white;
 }
+/*RegisterComponent*/
+.cardRegister {
+  height: 700px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 500px;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.card-bodyResgister{
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+.card-header h3 {
+  color: white;
+}
+.card-footerRegister a {
+	margin-left: 10px;
+	color: #002a56;
+  }
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.combobox{
+  font: bold;
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding-left: 10px;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+.input-group-prepend span {
+  width: 50px;
+  background-color: #002a56;
+  color: black;
+  border: 0 !important;
+}
+.login_btn {
+  color: white;
+  background-color: #002a56;
+  width: 100px;
+}
+.links {
+  color: white;
+}

@@ -11,12 +11,6 @@ class MoviesCatalogue extends Component {
     this.MoviesService = new MoviesService();
   }
 
-  componentDidMount(){
-    this.MoviesService.getAll.then(data =>{
-      console.log(data);
-    })
-  }
-
   render() {
     const catalogue = this.props.movies.map((movie) => {
       return (
