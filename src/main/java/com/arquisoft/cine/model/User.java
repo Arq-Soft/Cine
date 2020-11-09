@@ -35,6 +35,9 @@ public class User {
     private String name;
     private int phone;
 
+    private String adress;
+    private Date date_Birth;
+
     public int getId() {
         return id;
     }
