@@ -2,13 +2,15 @@ package com.arquisoft.cine.controller;
 
 import com.arquisoft.cine.model.User;
 import com.arquisoft.cine.service.UserService;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/* CrossOrigin nos permite controlar las peticiones al backend */
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class UserController {
     
