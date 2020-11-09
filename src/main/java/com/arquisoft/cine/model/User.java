@@ -24,7 +24,6 @@ import javax.persistence.TemporalType;
 public class User {
 
     @Id
-    @GeneratedValue
     private int id;
     
     @Temporal(TemporalType.TIMESTAMP)

@@ -1,9 +1,10 @@
 import { Component } from "react";
 import "./App.css";
-import MoviesCatalogue from "./components/MoviesComponent";
+/*import MoviesCatalogue from "./components/MoviesComponent";
 import MainComponents from "./components/MainComponent";
-import LoginComponent from "./components/LoginComponent";
+import LoginComponent from "./components/LoginComponent";*/
 import { MOVIES } from "./shared/Movies";
+import RegisterComponent from "./components/RegisterComponent";
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/*<LoginComponent Login={this.state.Login} />*/}
+        <RegisterComponent register={this.state.Login} />
+        {/*<LoginComponent Login={this.state.Login} />
         <MainComponents main={this.state.main} />
         <div className="container">
           <div id="main"><div id="header">
@@ -24,7 +26,7 @@ class App extends Component {
               </div></div> 
           </div>
         </div>
-        <MoviesCatalogue movies={this.state.movies} />
+        <MoviesCatalogue movies={this.state.movies} />*/}
       </div>
     );
   }

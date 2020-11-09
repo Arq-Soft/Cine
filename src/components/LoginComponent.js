@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {PersonaService} from '../services/PersonaService';
+import { PersonaService } from "../services/PersonaService";
 
 class LoginComponent extends Component {
   constructor(props) {
@@ -7,17 +7,16 @@ class LoginComponent extends Component {
     this.state = {
       username: "",
       password: "",
-      isFetch: true,
-      Personas: []
     };
-    this.PersonaService = new PersonaService();
+    this.personaService = new PersonaService();
   }
 
-  componentDidMount(){
-    this.PersonaService.getAll.then(data =>{
-      console.log(data);
-    })
+  componentDidMount() {
+    this.personaService
+      .getAll()
+      .then((data) => this.setState({ personas: data }));
   }
+
   render() {
     return (
       <div className="container">
@@ -38,9 +37,6 @@ class LoginComponent extends Component {
                     type="text"
                     className="form-control"
                     placeholder="Username"
-                    onChange={(_event, Username) =>
-                      this.setState({ username: Username })
-                    }
                   />
                 </div>
                 <div className="input-group">
@@ -53,9 +49,6 @@ class LoginComponent extends Component {
                     type="password"
                     className="form-control"
                     placeholder="Password"
-                    onChange={(_event, Password) =>
-                      this.setState({ password: Password })
-                    }
                   />
                 </div>
                 <div className="form-group">
