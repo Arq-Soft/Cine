@@ -32,6 +32,7 @@ public class UserService {
         return repository.findByName(name);
     }
 
+
     public String deleteUser(int id) {
         repository.deleteById(id);
         return "User removed !! " + id;
@@ -40,9 +41,25 @@ public class UserService {
     public User updateUser(User User) {
         User existingUser = repository.findById(User.getId()).orElse(null);
         existingUser.setName(User.getName());
+        existingUser.setLastname(User.getLastname());
         existingUser.setEmail(User.getEmail());
         existingUser.setPhone(User.getPhone());
+        existingUser.setId_type(User.getId_type());
+        existingUser.setAdress(User.getAdress());
+        existingUser.setDate_Birth(User.getDate_Birth());
         return repository.save(existingUser);
     }
+
+	public User autenticateUser(int id, String password) {
+        User existingUser = repository.findById(id).orElse(null);
+        if ( existingUser == null){
+            return null;
+        } else{
+            if (existingUser.getPassword() == password){
+                return existingUser;
+            }
+        }
+		return null;
+	}
 
 }

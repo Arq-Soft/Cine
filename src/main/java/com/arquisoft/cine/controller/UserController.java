@@ -37,6 +37,11 @@ public class UserController {
         return service.getUserById(id);
     }
 
+    @GetMapping("/AutenticateUser/{id},{password}")
+    public User autenticateUser(@PathVariable int id, String password) {
+        return service.autenticateUser(id, password);
+    }
+
     @GetMapping("/User/{name}")
     public User findUserByName(@PathVariable String name) {
         return service.getUserByName(name);
