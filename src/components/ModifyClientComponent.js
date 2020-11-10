@@ -18,16 +18,17 @@ class RegisterComponent extends Component {
   }
 
   componentDidMount() {
-    this.personaService.getAll().then((data) => this.setState({ personas: data }));
-    this.setState({});
+    this.personaService
+      .getAll()
+      .then((data) => this.setState({ personas: data }));
+    this.setState({
+      
+    });
   }
 
   save() {
     this.personaService.save(this.state.persona).then((data) => {
       console.log(data);
-    })
-    .catch(error=>{
-      console.log(error);
     });
   }
 
@@ -37,7 +38,7 @@ class RegisterComponent extends Component {
         <div className="d-flex justify-content-center h-100">
           <div className="cardRegister">
             <div className="card-header">
-              <h3>Register</h3>
+              <h3>Update your information</h3>
             </div>
             <div className="card-body">
               <form onSubmit={this.handleSubmit}>
@@ -131,7 +132,7 @@ class RegisterComponent extends Component {
                     placeholder="Id"
                   />
                 </div>
-{/* 
+
                 <div className="input-group">
                   <div className="input-group-prepend">
                     <span className="input-group-text">
@@ -176,7 +177,7 @@ class RegisterComponent extends Component {
                     <option value="mercedes">Passport</option>
                   </select>
                 </div>
- */}
+
                 <div className="input-group">
                   <div className="input-group-prepend">
                     <span className="input-group-text">
@@ -199,7 +200,7 @@ class RegisterComponent extends Component {
                     placeholder="Address"
                   />
                 </div>
-           
+
                 <div className="input-group">
                   <div className="input-group-prepend">
                     <span className="input-group-text">
