@@ -2,19 +2,33 @@ import React, { Component } from "react";
 import { PersonaService } from "../services/PersonaService";
 
 class LoginComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
+  state = {
+    persona: {
+      id: "",
       password: "",
-    };
-    this.personaService = new PersonaService();
-  }
+    },
+  };
+  personaService = new PersonaService();
 
-  componentDidMount() {
+  handleChange = async (e) => {
+    await this.setState({
+      persona: {
+        ...this.state.persona,
+        [e.target.name]: e.target.value,
+      },
+    });
+    console.log(this.state.persona);
+  };
+
+  Login() {
     this.personaService
-      .getAll()
-      .then((data) => this.setState({ personas: data }));
+      .Login(this.state.persona.id)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
@@ -36,7 +50,9 @@ class LoginComponent extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Username"
+                    name="id"
+                    placeholder="Id"
+                    onChange={this.handleChange}
                   />
                 </div>
                 <div className="input-group">
@@ -48,13 +64,16 @@ class LoginComponent extends Component {
                   <input
                     type="password"
                     className="form-control"
+                    name="password"
                     placeholder="Password"
+                    onChange={this.handleChange}
                   />
                 </div>
                 <div className="form-group">
                   <input
                     type="submit"
                     value="Login"
+                    onClick={this.Login()}
                     className="btn float-right login_btn"
                   ></input>
                 </div>
