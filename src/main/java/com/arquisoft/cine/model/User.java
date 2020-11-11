@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,7 +18,9 @@ import javax.persistence.TemporalType;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "User")
+@Table(name = "User", 
+        uniqueConstraints = @UniqueConstraint(columnNames = {"email"})
+        )
 
 
 public class User {
@@ -29,7 +32,9 @@ public class User {
     @Column(name = "REGIST_DATE")
     private Date registDate;
 
+    
     private String email;
+
     private String password;
     private String name;
     private int phone;
@@ -112,6 +117,7 @@ public class User {
 	public void setDate_Birth(Date date_Birth) {
 		this.date_Birth = date_Birth;
 	}
+
 
 
 }

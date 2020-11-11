@@ -37,6 +37,11 @@ public class UserController {
         return service.getUserById(id);
     }
 
+    @GetMapping("/AutenticateUser/{id},{password}")
+    public User autenticateUser(@PathVariable int id, String password) {
+        return service.autenticateUser(id, password);
+    }
+
     @GetMapping("/User/{name}")
     public User findUserByName(@PathVariable String name) {
         return service.getUserByName(name);
@@ -50,5 +55,8 @@ public class UserController {
     @DeleteMapping("/delete/{id}")
     public String deleteUser(@PathVariable int id) {
         return service.deleteUser(id);
+    }
+
+    public UserController() {
     }
 }
