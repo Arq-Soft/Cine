@@ -37,8 +37,8 @@ public class UserController {
         return service.getUserById(id);
     }
 
-    @GetMapping("/AutenticateUser/{id},{password}")
-    public User autenticateUser(@PathVariable int id, String password) {
+    @GetMapping("/AutenticateUser/{id,password}")
+    public User autenticateUser(@RequestParam int id, String password) {
         return service.autenticateUser(id, password);
     }
 

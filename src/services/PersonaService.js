@@ -16,8 +16,8 @@ export class PersonaService {
       .then((res) => res.data);
   }
 
-  Login(id) {
-    return axios.get(this.baseUrl + "UserById/{id}", {params: { id} })
+  Login(id,password) {
+    return axios.get(this.baseUrl + "AutenticateUser/{id,password}", {params: {id,password}})
       .then((res) => res.data);
   }
 }

@@ -1,34 +1,28 @@
 import React, { Component } from "react";
 import { PersonaService } from "../services/PersonaService";
 
+
 class LoginComponent extends Component {
-  state = {
+  constructor(props) {
+  super(props);
+  this.state = {
     persona: {
-      id: "",
-      password: "",
+      username: '',
+      password: '',
     },
   };
-  personaService = new PersonaService();
+  this.personaService = new PersonaService(); 
+  this.login = this.login.bind(this);
+  this.onChange = this.onChange.bind(this);  
+}
 
-  handleChange = async (e) => {
-    await this.setState({
-      persona: {
-        ...this.state.persona,
-        [e.target.name]: e.target.value,
-      },
-    });
-    console.log(this.state.persona);
-  };
+  login(){
+    console.log("Login funcion");
+  }
 
-  Login() {
-    this.personaService
-      .Login(this.state.persona.id)
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  onChange(e){
+    this.setState({[e.target.name]:e.target.value});
+    console.log(this.state);
   }
 
   render() {
@@ -50,9 +44,9 @@ class LoginComponent extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    name="id"
+                    name="username"
                     placeholder="Id"
-                    onChange={this.handleChange}
+                    onChange={this.onChange}
                   />
                 </div>
                 <div className="input-group">
@@ -66,14 +60,14 @@ class LoginComponent extends Component {
                     className="form-control"
                     name="password"
                     placeholder="Password"
-                    onChange={this.handleChange}
+                    onChange={this.onChange}
                   />
                 </div>
                 <div className="form-group">
                   <input
                     type="submit"
                     value="Login"
-                    onClick={this.Login()}
+                    onClick={this.handleSubmit}
                     className="btn float-right login_btn"
                   ></input>
                 </div>
