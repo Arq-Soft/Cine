@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+target/classes/application.properties
+*.properties
+src/main/resources/application.properties
+target/classes/application.properties

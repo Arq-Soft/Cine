@@ -8,7 +8,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,6 +34,8 @@ public class User {
     private String name;
     private int phone;
 
+    private String lastname;
+    private String id_type;
     private String adress;
     private Date date_Birth;
 
@@ -79,6 +80,38 @@ public class User {
     public void setPhone(int phone) {
         this.phone = phone;
     }
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getId_type() {
+		return id_type;
+	}
+
+	public void setId_type(String id_type) {
+		this.id_type = id_type;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public Date getDate_Birth() {
+		return date_Birth;
+	}
+
+	public void setDate_Birth(Date date_Birth) {
+		this.date_Birth = date_Birth;
+	}
 
 
 }
