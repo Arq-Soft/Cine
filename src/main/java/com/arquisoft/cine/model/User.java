@@ -7,6 +7,11 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -26,13 +31,22 @@ import javax.persistence.TemporalType;
 public class User {
 
     @Id
+    @Column(name = "id", unique = true)
     private int id;
     
+
+    @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "REGIST_DATE")
+    @Column(name = "registDate")
     private Date registDate;
 
-    
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "modify_date")
+    private Date modifyDate;
+
+    @Column(name = "email", unique = true)
+    @UniqueElements
     private String email;
 
     private String password;
