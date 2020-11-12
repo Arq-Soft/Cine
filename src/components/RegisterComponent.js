@@ -131,7 +131,7 @@ class RegisterComponent extends Component {
                     placeholder="Id"
                   />
                 </div>
-{/* 
+
                 <div className="input-group">
                   <div className="input-group-prepend">
                     <span className="input-group-text">
@@ -176,7 +176,7 @@ class RegisterComponent extends Component {
                     <option value="mercedes">Passport</option>
                   </select>
                 </div>
- */}
+
                 <div className="input-group">
                   <div className="input-group-prepend">
                     <span className="input-group-text">

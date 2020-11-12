@@ -16,8 +16,18 @@ export class PersonaService {
       .then((res) => res.data);
   }
 
-  Login(id,password) {
-    return axios.get(this.baseUrl + "AutenticateUser/{id,password}", {params: {id,password}})
-      .then((res) => res.data);
+  Login(id, password) {
+    /*var intID = parseInt(id);
+    return axios.get(`${this.baseUrl}AutenticateUser/${intID}/${password}`)
+    .then((res) => res.data);
+    return axios.get(`${this.baseUrl}AutenticateUser/`, {params: {id: intID, password: password}})*/
+    return new Promise((resolve, reject) => {
+      resolve({
+        data: {
+          id: "12354",
+          name: "Andrea",
+        },
+      });
+    }).then((res) => res.data);
   }
 }
