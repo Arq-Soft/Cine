@@ -52,12 +52,8 @@ public class UserService {
 
 	public User autenticateUser(int id, String password) {
         User existingUser = repository.findById(id).orElse(null);
-        if ( existingUser == null){
-            return null;
-        } else{
-            if (existingUser.getPassword() == password){
-                return existingUser;
-            }
+        if (existingUser != null && existingUser.getPassword().equals(password)){
+            return existingUser;
         }
 		return null;
 	}
