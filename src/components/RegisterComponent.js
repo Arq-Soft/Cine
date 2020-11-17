@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { PersonaService } from "../services/PersonaService";
+import { withRouter } from 'react-router-dom';
 
 class RegisterComponent extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class RegisterComponent extends Component {
   save() {
     this.personaService.save(this.state.persona).then((data) => {
       console.log(data);
+      this.props.history.push({pathname:'/login'});
     })
     .catch(error=>{
       console.log(error);
@@ -258,4 +260,4 @@ class RegisterComponent extends Component {
     );
   }
 }
-export default RegisterComponent;
+export default withRouter(RegisterComponent);

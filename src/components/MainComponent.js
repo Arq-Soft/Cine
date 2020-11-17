@@ -1,9 +1,21 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
+import { withRouter } from 'react-router-dom';
+import {
+  Carousel,
+  CarouselItem,
+  CarouselControl,
+  CarouselIndicators,
+  CarouselCaption,
+} from "reactstrap";
 
 class MainComponents extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {}
+  }
+
+  navigate(){
+    this.props.history.push({pathname:'/test'})
   }
   render() {
       return (
@@ -14,22 +26,10 @@ class MainComponents extends Component {
               <div id="slogan">
                 <div className="image png"></div>
                 <div className="inside">
-                  <h2>We are breaking<span>All Limitations</span></h2>
-                  <p>Texto3</p>
-                  <div className="wrapper"><a href="./components/MoviesComponent" className="link1"><span><span>Learn More</span></span></a></div>
+                  <h2>Cinema <span>Paradiso</span></h2>
                 </div>
               </div>
-              <div className="box">
-                <div className="border-right">
-                  <div className="border-left">
-                    <div className="inner">
-                      <p>Texto3</p>
-                      <div className="img-box1"><img src="images/1page-img1.jpg" alt="" />Texto1</div>
-                      <p>Texto2</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                            
               <div className="content">
                 <h3>Fresh Movies</h3>
                 <ul className="movies">
@@ -72,4 +72,4 @@ class MainComponents extends Component {
   }
 }
 
-export default MainComponents;
+export default withRouter(MainComponents);

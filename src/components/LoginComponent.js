@@ -1,20 +1,24 @@
 import React, { Component } from "react";
 import { PersonaService } from "../services/PersonaService";
+import { withRouter } from "react-router-dom";
 
 
 class LoginComponent extends Component {
   constructor(props) {
-  super(props);
-  this.state = {
-    persona: {
-      username: "",
-      password: "",
-    },
-  };
-  this.handleChange =this.handleChange.bind(this);
-  this.personaService = new PersonaService(); 
-}
-  handleChange(e){
+    super(props);
+    this.state = {
+      persona: {
+        username: "",
+        password: "",
+      },
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.personaService = new PersonaService();
+  }
+  navigate() {
+    this.props.history.push({ pathname: "/signin" });
+  }
+  handleChange(e) {
     this.setState({
       persona: {
         ...this.state.persona,
@@ -22,20 +26,20 @@ class LoginComponent extends Component {
       },
     });
     console.log(this.state.persona);
-  };
-  login(){
+  }
+  login() {
     this.personaService
-      .Login(parseInt(this.state.persona.username), this.state.persona.password)
-      .then((data) => {console.log(data);
-        console.log("Funciona");
+      .Login(this.state.persona.username, this.state.persona.password)
+      .then((data) => {
+        console.log(data);
+        this.props.history.push({ pathname: "/home" });
       })
       .catch((error) => {
         console.log(error);
       });
-    };
+  }
 
   render() {
-
     return (
       <div className="container">
         <div className="d-flex justify-content-center h-100">
@@ -49,7 +53,7 @@ class LoginComponent extends Component {
                   <div className="input-group-prepend">
                     <span className="input-group-text">
                       <i className="fas fa-user"></i>
-                    </span> 
+                    </span>
                   </div>
                   <input
                     type="text"
@@ -74,19 +78,20 @@ class LoginComponent extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <input
-                    type="submit"
-                    value="Login"
+                  <button
+                    type="button"
                     onClick={this.login.bind(this)}
                     className="btn float-right login_btn"
-                  ></input>
+                  >
+                    Login
+                  </button>
                 </div>
               </form>
             </div>
             <div className="card-footer">
               <div className="d-flex justify-content-center links">
                 Don't have an account?
-                <a href="https://github.com/Arq-Soft/Cine">Sign Up</a>
+                <p onClick={this.navigate.bind(this)}>Sign In</p>
               </div>
             </div>
           </div>
@@ -95,4 +100,4 @@ class LoginComponent extends Component {
     );
   }
 }
-export default LoginComponent;
+export default withRouter(LoginComponent);
