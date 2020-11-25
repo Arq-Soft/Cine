@@ -16,7 +16,7 @@ class LoginComponent extends Component {
     this.personaService = new PersonaService();
   }
   navigate() {
-    this.props.history.push({ pathname: "/signin" });
+    this.props.history.push({ pathname: "/home" });
   }
   handleChange(e) {
     this.setState({
@@ -25,7 +25,6 @@ class LoginComponent extends Component {
         [e.target.name]: e.target.value,
       },
     });
-    console.log(this.state.persona);
   }
   login() {
     this.personaService

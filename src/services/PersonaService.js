@@ -18,7 +18,6 @@ export class PersonaService {
 
   Login(id, password) {
     var intID = parseInt(id);
-    console.log({id, password});
     return axios.get(`${this.baseUrl}AutenticateUser/${intID}/${password}`)
     .then((res) => res.data);
     /*return axios.get(`${this.baseUrl}AutenticateUser/`, {params: {id: intID, password: password}})*/

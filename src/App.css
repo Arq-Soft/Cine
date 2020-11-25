@@ -20,8 +20,10 @@ span {
   font-weight: bold;
 }
 #main {
-  width: 940px;
-  margin: 0 auto;
+  width: 900px;
+  margin: auto;
+  border-left: black 7px double;
+  border-right: black 7px double;
   font-size: 0.875em;
 }
 #header {
@@ -84,7 +86,6 @@ span {
 #header .row-2 ul li a.active {
     color: #6493ad;
 }
-
 
 
 /*LoginComponent*/
