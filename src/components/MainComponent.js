@@ -1,75 +1,162 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import "../App.css";
+import cars from "../images/carsCarrusel.jpg";
+import prueba2 from "../images/prueba2.jpg";
+import {Collapse,Navbar,NavbarBrand,Nav,NavItem,UncontrolledDropdown,Carousel,CarouselItem,CarouselControl,
+  CarouselIndicators,CarouselCaption,NavLink,} from "reactstrap";
+import { connect } from 'react-redux';
+const items = [
+  {
+    src: cars,
+    altText: "First Movie",
+  },
+  {
+    src:prueba2,
+    altText: "Second Movie",
+  },
+];
 
 class MainComponents extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { activeIndex: 0 };
+    this.next = this.next.bind(this);
+    this.previous = this.previous.bind(this);
+    this.goToIndex = this.goToIndex.bind(this);
+    this.onExiting = this.onExiting.bind(this);
+    this.onExited = this.onExited.bind(this);
+  }
+  onExiting() {
+    this.animating = true;
+  }
+
+  onExited() {
+    this.animating = false;
+  }
+
+  next() {
+    if (this.animating) return;
+    const nextIndex =
+      this.state.activeIndex === items.length - 1
+        ? 0
+        : this.state.activeIndex + 1;
+    this.setState({ activeIndex: nextIndex });
+  }
+
+  previous() {
+    if (this.animating) return;
+    const nextIndex =
+      this.state.activeIndex === 0
+        ? items.length - 1
+        : this.state.activeIndex - 1;
+    this.setState({ activeIndex: nextIndex });
+  }
+
+  goToIndex(newIndex) {
+    if (this.animating) return;
+    this.setState({ activeIndex: newIndex });
+  }
+
+  navigateLogin() {
+    this.props.history.push({ pathname: "/login" });
+  }
+  navigateRegister() {
+    this.props.history.push({ pathname: "/signin" });
   }
   render() {
+    const { activeIndex } = this.state;
+
+    const slides = items.map((item) => {
       return (
-        <div className="tail-top">
-        <div className="tail-bottom">
-          <div id="main">
-            <div id="content">
+        <CarouselItem
+          onExiting={this.onExiting}
+          onExited={this.onExited}
+          key={item.src}
+        >
+          <img src={item.src} alt={item.altText}  width="100%"/>
+          <CarouselCaption
+            captionText={item.caption || ""}
+            captionHeader={item.caption || ""}
+          />
+        </CarouselItem>
+      );
+    });
+    return (
+      <div id="main">
+        <div id="content">
+          <Navbar color="fixed" light expand="md">
+            <NavbarBrand>
               <div id="slogan">
                 <div className="image png"></div>
                 <div className="inside">
-                  <h2>We are breaking<span>All Limitations</span></h2>
-                  <p>Texto3</p>
-                  <div className="wrapper"><a href="./components/MoviesComponent" className="link1"><span><span>Learn More</span></span></a></div>
+                  <h2>
+                    Cinema <span>Paradiso</span>
+                  </h2>
                 </div>
               </div>
-              <div className="box">
-                <div className="border-right">
-                  <div className="border-left">
-                    <div className="inner">
-                      <p>Texto3</p>
-                      <div className="img-box1"><img src="images/1page-img1.jpg" alt="" />Texto1</div>
-                      <p>Texto2</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="content">
-                <h3>Fresh Movies</h3>
-                <ul className="movies">
-                  <li>
-                    <h4>Toy Story 3</h4>
-                    <img src="images/1page-img2.jpg" alt="" />
-                    <p>Texto3</p>
-                    <div className="wrapper"><a href="./components/MoviesComponent" className="link2"><span><span>Read More</span></span></a></div>
-                  </li>
-                  <li>
-                    <h4>Prince of Percia: Sands of Time</h4>
-                    <img src="images/1page-img3.jpg" alt="" />
-                    <p>Texto3</p>
-                    <div className="wrapper"><a href="./components/MoviesComponent" className="link2"><span><span>Read More</span></span></a></div>
-                  </li>
-                  <li className="last">
-                    <h4>The Twilight Saga: Eclipse</h4>
-                    <img src="images/1page-img4.jpg" alt="" />
-                    <p>Quisque felit odio ut nunc convallis semper sente ris feugiat. Odionam leo phasellentum id vitantesque nunc tor quisque a maecenatibus pellus.</p>
-                    <div className="wrapper"><a href="./components/MoviesComponent" className="link2"><span><span>Read More</span></span></a></div>
-                  </li>
-                  <li className="clear">&nbsp;</li>
-                </ul>
-              </div>
-            </div>
-            <div id="footer">
-              <div className="left">
-                <div className="right">
-                  <div className="footerlink">
-                    <p className="lf">Copyright &copy; 2020 <a href="./components/MoviesComponent">Cinema Paradiso</a>- All Rights Reserved</p>
-                    <div></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </NavbarBrand>
+            <Collapse navbar>
+              <Nav className="mr-auto" navbar>
+                <NavItem>{this.props.auth_token
+                  ? <NavLink onClick={this.navigateLogin.bind(this)}>SALIR</NavLink>
+                  :
+                  <NavLink onClick={this.navigateLogin.bind(this)}>Ingresar</NavLink>
+                }
+                </NavItem>
+                {!this.props.auth_token &&(<NavItem>
+                   <NavLink onClick={this.navigateRegister.bind(this)}>Registrarse</NavLink>
+                </NavItem>)
+                }
+                <UncontrolledDropdown nav inNavbar></UncontrolledDropdown>
+              </Nav>
+            </Collapse>
+          </Navbar>
+          <div className="content">
+            <Carousel
+              activeIndex={activeIndex}
+              next={this.next}
+              previous={this.previous}
+            >
+              <CarouselIndicators
+                items={items}
+                activeIndex={activeIndex}
+                onClickHandler={this.goToIndex}
+              />
+              {slides}
+              <CarouselControl
+                direction="prev"
+                directionText="Previous"
+                onClickHandler={this.previous}
+              />
+              <CarouselControl
+                direction="next"
+                directionText="Next"
+                onClickHandler={this.next}
+              />
+            </Carousel>
           </div>
         </div>
+        <div id="footer">
+          <p className="lf">
+            Copyright &copy; 2020 Cinema Paradiso - All Rights Reserved
+          </p>
+        </div>
       </div>
-      );
+    );
+  }
+}
+const mapStateToprops = (state) => {
+  return {
+    auth_token: state.auth_token
   }
 }
 
-export default MainComponents;
+// ARREGLARLO PARA LOG OUT
+const mapDispatchToProps = (state) => {
+  return {
+    auth_token:state.auth_token
+    }
+  }  
+
+export default connect( mapStateToprops,  mapDispatchToProps )(withRouter(MainComponents));

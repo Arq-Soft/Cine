@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Media } from "reactstrap";
 import {MoviesService} from '../services/MoviesService';
+import { withRouter } from 'react-router-dom';
 
 class MoviesCatalogue extends Component {
   constructor(props) {
@@ -65,4 +66,4 @@ class MoviesCatalogue extends Component {
   }
 }
 
-export default MoviesCatalogue;
+export default withRouter(MoviesCatalogue);
