@@ -78,10 +78,10 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 ## Autores ✒️
 
 * **Karen Grisales** - *Arquitecta*
-* **Anderson Villa** - *Tester*
-* **Laura Monsalve** - *BackEnd*
-* **Sebastian Ochoa** - *Integrador*
-* **Andrea Calderón** - *FrontEnd*  
+* **Anderson Villa** - *Arquitecta*
+* **Sebastian Ochoa** - *Tester*
+* **Laura Monsalve** - *BackEnd e Integración*
+* **Andrea Calderón** - *FrontEnd e Integración*  
 
 ## Licencia 📄
 

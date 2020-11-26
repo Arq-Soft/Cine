@@ -20,6 +20,9 @@ class LoginComponent extends Component {
   navigate() {
     this.props.history.push({ pathname: "/home" });
   }
+  navigateRegister() {
+    this.props.history.push({ pathname: "/signin" });
+  }
   handleChange(e) {
     this.setState({
       persona: {
@@ -92,7 +95,7 @@ class LoginComponent extends Component {
             <div className="card-footer">
               <div className="d-flex justify-content-center links">
                 Don't have an account?
-                <p onClick={this.navigate.bind(this)}>Sign In</p>
+                <p onClick={this.navigateRegister.bind(this)}>Sign In</p>
               </div>
             </div>
           </div>

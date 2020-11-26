@@ -37,6 +37,10 @@ class RegisterComponent extends Component {
     });
   }
 
+  navigateLogin() {
+    this.props.history.push({ pathname: "/login" });
+  }
+
   render() {
     return (
       <div className="container">
@@ -63,7 +67,7 @@ class RegisterComponent extends Component {
                         return { persona };
                       });
                     }}
-                    type="text"
+                    type="email"
                     className="form-control"
                     placeholder="Email"
                   />
@@ -257,8 +261,8 @@ class RegisterComponent extends Component {
             </div>
             <div className="card-footer">
               <div className="d-flex justify-content-center links">
-                Do you have an account?
-                <a href="https://github.com/Arq-Soft/Cine">Login</a>
+                Do you have an account? 
+                <p onClick={this.navigateLogin.bind(this)}>Login</p>
               </div>
             </div>
           </div>
