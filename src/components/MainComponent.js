@@ -3,20 +3,9 @@ import { withRouter } from "react-router-dom";
 import "../App.css";
 import cars from "../images/carsCarrusel.jpg";
 import prueba2 from "../images/prueba2.jpg";
-import {
-  Collapse,
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  UncontrolledDropdown,
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption,
-  NavLink,
-} from "reactstrap";
+import {Collapse,Navbar,NavbarBrand,Nav,NavItem,UncontrolledDropdown,Carousel,CarouselItem,CarouselControl,
+  CarouselIndicators,CarouselCaption,NavLink,} from "reactstrap";
+import { connect } from 'react-redux';
 const items = [
   {
     src: cars,
@@ -87,8 +76,8 @@ class MainComponents extends Component {
         >
           <img src={item.src} alt={item.altText}  width="100%"/>
           <CarouselCaption
-            captionText={item.caption}
-            captionHeader={item.caption}
+            captionText={item.caption || ""}
+            captionHeader={item.caption || ""}
           />
         </CarouselItem>
       );
@@ -109,12 +98,16 @@ class MainComponents extends Component {
             </NavbarBrand>
             <Collapse navbar>
               <Nav className="mr-auto" navbar>
-                <NavItem>
+                <NavItem>{this.props.auth_token
+                  ? <NavLink onClick={this.navigateLogin.bind(this)}>SALIR</NavLink>
+                  :
                   <NavLink onClick={this.navigateLogin.bind(this)}>Ingresar</NavLink>
+                }
                 </NavItem>
-                <NavItem>
-                  <NavLink onClick={this.navigateRegister.bind(this)}>Registrarse</NavLink>
-                </NavItem>
+                {!this.props.auth_token &&(<NavItem>
+                   <NavLink onClick={this.navigateRegister.bind(this)}>Registrarse</NavLink>
+                </NavItem>)
+                }
                 <UncontrolledDropdown nav inNavbar></UncontrolledDropdown>
               </Nav>
             </Collapse>
@@ -153,5 +146,17 @@ class MainComponents extends Component {
     );
   }
 }
+const mapStateToprops = (state) => {
+  return {
+    auth_token: state.auth_token
+  }
+}
 
-export default withRouter(MainComponents);
+// ARREGLARLO PARA LOG OUT
+const mapDispatchToProps = (state) => {
+  return {
+    auth_token:state.auth_token
+    }
+  }  
+
+export default connect( mapStateToprops,  mapDispatchToProps )(withRouter(MainComponents));

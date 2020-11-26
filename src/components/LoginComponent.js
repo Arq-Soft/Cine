@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { PersonaService } from "../services/PersonaService";
 import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
+import * as actionTypes from '../store/actions';
 
 
 class LoginComponent extends Component {
@@ -99,4 +101,19 @@ class LoginComponent extends Component {
     );
   }
 }
-export default withRouter(LoginComponent);
+const mapStateToprops = (state) => {
+  return {
+    auth_token: state.auth_token
+  }
+}
+
+const mapDispatchToProps = (dispath) => {
+  return {
+    setAuthToken: (value) => {
+      console.log({value});
+      dispath({ type: actionTypes.SET_AUTH_TOKEN, auth_token: value })
+    }
+  }  
+}
+
+export default connect( mapStateToprops,  mapDispatchToProps )(withRouter(LoginComponent));

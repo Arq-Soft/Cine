@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { PersonaService } from "../services/PersonaService";
 import { withRouter } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
 
 class RegisterComponent extends Component {
   constructor(props) {
@@ -236,23 +235,23 @@ class RegisterComponent extends Component {
                     </span>
                   </div>
                   <input
-                    /*<DatePicker selected={this.state.persona.dateOfBirth} onChange={this.onChange}/>
-                    <br></br>*/
-
-
-                    type="text"
+                    type="date"
+                    onChange={(e) => { console.log({ 
+                      DATE_NUMBER: e.target.valueAsNumber, 
+                      DATE_AS_DATE: e.target.valueAsDate
+                    }) }}
                     className="form-control"
                     placeholder="Date of birth"
                   />
                 </div>
 
                 <div className="form-group">
-                  <input
-                    type="submit"
+                <button
+                    type="button"
                     value="Register"
                     onClick={this.save}
                     className="btn float-right login_btn"
-                  ></input>
+                  ></button>
                 </div>
               </form>
             </div>
