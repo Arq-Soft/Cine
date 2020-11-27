@@ -42,7 +42,7 @@ public class User {
     private String lastname;
     private String id_type;
     private String adress;
-    private Date date_Birth;
+    private Long date_Birth;
 
     public int getId() {
         return id;
@@ -110,11 +110,11 @@ public class User {
 		this.adress = adress;
 	}
 
-	public Date getDate_Birth() {
+	public Long getDate_Birth() {
 		return date_Birth;
 	}
 
-	public void setDate_Birth(Date date_Birth) {
+	public void setDate_Birth(Long date_Birth) {
 		this.date_Birth = date_Birth;
 	}
 

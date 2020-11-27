@@ -19,7 +19,10 @@ public class UserController {
 
     @PostMapping("/addUser")
     public User addUser(@RequestBody User User) {
+        if(service.getUserById(User.getId()) == null){
         return service.saveUser(User);
+        }
+        else{return null;}
     }
 
     @PostMapping("/addUsers")
