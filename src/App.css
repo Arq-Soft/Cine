@@ -182,6 +182,8 @@ span {
   background-color: #002a56;
   width: 100px;
 }
-.links {
-  color: white;
+.links-access {
+  color: blue;
+  text-decoration: underline blue;
+  cursor: pointer;
 }

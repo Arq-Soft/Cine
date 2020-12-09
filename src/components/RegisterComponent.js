@@ -1,40 +1,44 @@
 import React, { Component } from "react";
 import { PersonaService } from "../services/PersonaService";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 class RegisterComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        persona: {
-            id: null,
-            name: null,
-            email: null,
-            phone: null,
-            password: null,
-            lastname:null,
-            idType:null,
-            address:null,
-            dateOfBirth:null
-          }
+      persona: {
+        id: null,
+        name: null,
+        email: null,
+        phone: null,
+        password: null,
+        lastname: null,
+        id_type: null,
+        adress: null,
+        date_birth:null
+      },
     };
     this.personaService = new PersonaService();
     this.save = this.save.bind(this);
   }
 
   componentDidMount() {
-    this.personaService.getAll().then((data) => this.setState({ personas: data }));
+    this.personaService
+      .getAll()
+      .then((data) => this.setState({ personas: data }));
     this.setState({});
   }
 
   save() {
-    this.personaService.save(this.state.persona).then((data) => {
-      console.log(data);
-      this.props.history.push({pathname:'/login'});
-    })
-    .catch(error=>{
-      console.log(error);
-    });
+    this.personaService
+      .save(this.state.persona)
+      .then((data) => {
+        console.log(data);
+        this.props.history.push({ pathname: "/login" });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   navigateLogin() {
@@ -58,7 +62,77 @@ class RegisterComponent extends Component {
                     </span>
                   </div>
                   <input
-                    value={this.state.persona.email} id="email"
+                    value={this.state.persona.name}
+                    id="name"
+                    onChange={(e) => {
+                      let val = e.target.value;
+                      this.setState((prevState) => {
+                        let persona = Object.assign({}, prevState.persona);
+                        persona.name = val;
+                        return { persona };
+                      });
+                    }}
+                    type="text"
+                    className="form-control"
+                    placeholder="Name"
+                  />
+                </div>
+
+                <div className="input-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text">
+                      <i className="fas fa-user"></i>
+                    </span>
+                  </div>
+                  <input
+                    value={this.state.value}
+                    id="lastname"
+                    onChange={(e) => {
+                      let val = e.target.value;
+                      this.setState((prevState) => {
+                        let persona = Object.assign({}, prevState.persona);
+                        persona.lastname = val;
+                        return { persona };
+                      });
+                    }}
+                    type="text"
+                    className="form-control"
+                    placeholder="LastName"
+                  />
+                </div>
+
+                <div className="input-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text">
+                      <i className="fas fa-user"></i>
+                    </span>
+                  </div>
+                  <input
+                    value={this.state.persona.id}
+                    id="id"
+                    onChange={(e) => {
+                      let val = e.target.value;
+                      this.setState((prevState) => {
+                        let persona = Object.assign({}, prevState.persona);
+                        persona.id = val;
+                        return { persona };
+                      });
+                    }}
+                    type="text"
+                    className="form-control"
+                    placeholder="Id"
+                  />
+                </div>
+
+                <div className="input-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text">
+                      <i className="fas fa-user"></i>
+                    </span>
+                  </div>
+                  <input
+                    value={this.state.persona.email}
+                    id="email"
                     onChange={(e) => {
                       let val = e.target.value;
                       this.setState((prevState) => {
@@ -82,13 +156,13 @@ class RegisterComponent extends Component {
                   <input
                     value={this.state.persona.password}
                     id="password"
-                    onChange={(e) =>{
-                        let val = e.target.value;
+                    onChange={(e) => {
+                      let val = e.target.value;
                       this.setState((prevState) => {
                         let persona = Object.assign({}, prevState.persona);
                         persona.password = val;
                         return { persona };
-                      })
+                      });
                     }}
                     type="password"
                     className="form-control"
@@ -97,89 +171,21 @@ class RegisterComponent extends Component {
                 </div>
 
                 <div className="input-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">
-                      <i className="fas fa-user"></i>
-                    </span>
-                  </div>
-                  <input
-                    value={this.state.persona.name}
-                    id="name"
-                    onChange={(e) =>{
-                        let val = e.target.value;
-                      this.setState((prevState) => {
-                        let persona = Object.assign({}, prevState.persona);
-                        persona.name = val;
-                        return { persona };
-                      })
-                    }}
-                    type="text"
-                    className="form-control"
-                    placeholder="Name"
-                  />
-                </div>
-
-                <div className="input-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">
-                      <i className="fas fa-user"></i>
-                    </span>
-                  </div>
-                  <input
-                    value={this.state.persona.id}
-                    id="id"
-                    onChange={(e) =>{
-                        let val = e.target.value;
-                      this.setState((prevState) => {
-                        let persona = Object.assign({}, prevState.persona);
-                        persona.id = val;
-                        return { persona };
-                      })
-                    }}
-                    type="text"
-                    className="form-control"
-                    placeholder="Id"
-                  />
-                </div>
-
-                <div className="input-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">
-                      <i className="fas fa-user"></i>
-                    </span>
-                  </div>
-                  <input
-                    value={this.state.value}
-                    id="lastname"
-                    onChange={(e) => {
-                        let val = e.target.value;
-                      this.setState((prevState) => {
-                        let persona = Object.assign({}, prevState.persona);
-                        persona.lastname = val;
-                        return { persona };
-                      });
-                    }}
-                    type="text"
-                    className="form-control"
-                    placeholder="LastName"
-                  />
-                </div>
-
-                <div className="input-group">
                   <div className="input-group-prepend"></div>
                   <label className="combobox">Choose a identification</label>
                   <select
                     value={this.state.value}
-                    id="idType"
-                    onChange={(e) =>{
-                        let val = e.target.value;
+                    id="id_type"
+                    onChange={(e) => {
+                      let val = e.target.value;
                       this.setState((prevState) => {
                         let persona = Object.assign({}, prevState.persona);
-                        persona.idType = val;
+                        persona.id_type = val;
                         return { persona };
-                      })
+                      });
                     }}
-                    className="input-group-text">
+                    className="input-group-text"
+                  >
                     <option value="Citizenship card">Citizenship card</option>
                     <option value="Identity card">Identity card</option>
                     <option value="Passport">Passport</option>
@@ -194,21 +200,21 @@ class RegisterComponent extends Component {
                   </div>
                   <input
                     value={this.state.value}
-                    id="address"
-                    onChange={(e) =>{
-                        let val = e.target.value;
+                    id="adress"
+                    onChange={(e) => {
+                      let val = e.target.value;
                       this.setState((prevState) => {
                         let persona = Object.assign({}, prevState.persona);
-                        persona.address = val;
+                        persona.adress = val;
                         return { persona };
-                      })
+                      });
                     }}
                     type="text"
                     className="form-control"
                     placeholder="Address"
                   />
                 </div>
-           
+
                 <div className="input-group">
                   <div className="input-group-prepend">
                     <span className="input-group-text">
@@ -218,13 +224,13 @@ class RegisterComponent extends Component {
                   <input
                     value={this.state.persona.phone}
                     id="phone"
-                    onChange={(e) =>{
-                        let val = e.target.value;
+                    onChange={(e) => {
+                      let val = e.target.value;
                       this.setState((prevState) => {
                         let persona = Object.assign({}, prevState.persona);
                         persona.phone = val;
                         return { persona };
-                      })
+                      });
                     }}
                     type="text"
                     className="form-control"
@@ -238,31 +244,36 @@ class RegisterComponent extends Component {
                       <i className="fas fa-user"></i>
                     </span>
                   </div>
-                  <input
+                   <input
                     type="date"
-                    onChange={(e) => { console.log({ 
-                      DATE_NUMBER: e.target.valueAsNumber, 
-                      DATE_AS_DATE: e.target.valueAsDate
-                    }) }}
+                    onChange={(e) => {
+                      let val = e.target.valueAsNumber;
+                      this.setState((prevState) => {
+                        let persona = Object.assign({}, prevState.persona);
+                        persona.date_birth = val;
+                        return { persona };
+                      });
+                    }}
                     className="form-control"
                     placeholder="Date of birth"
-                  />
+                  /> 
                 </div>
 
                 <div className="form-group">
-                <button
+                  <button
                     type="button"
                     value="Register"
                     onClick={this.save}
                     className="btn float-right login_btn"
-                  ></button>
+                  >Register</button>
                 </div>
               </form>
             </div>
+
             <div className="card-footer">
               <div className="d-flex justify-content-center links">
-                Do you have an account? 
-                <p onClick={this.navigateLogin.bind(this)}>Login</p>
+                Do you have an account?
+                <p className="links-access" onClick={this.navigateLogin.bind(this)}>  Login</p>
               </div>
             </div>
           </div>

@@ -83,6 +83,3 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 * **Laura Monsalve** - *BackEnd e Integración*
 * **Andrea Calderón** - *FrontEnd e Integración*  
 
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
