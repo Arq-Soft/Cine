@@ -1,85 +1,45 @@
 # Cinema Paradiso
 
-_Acá va un párrafo que describa lo que es el proyecto_
+Cinema Paradiso is a web project of a cinema system developed with React for the Front-End part and SpringBoot for the Back-End part in which users can register and log in to reserve or buy tickets for the different films.
 
-## Comenzando 🚀
+## Starting 🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+These instructions will allow you to obtain a copy of the running project on your local machine for development and testing purposes.
 
-Mira **Deployment** para conocer como desplegar el proyecto.
+### Pre-requisites 📋
 
+To be able to run the project correctly you will need to have NodeJS, Java 11, Maven and MySQL Workbench installed.
 
-### Pre-requisitos 📋
+* The first thing will be to create a database in MYSQL named cinedb.
+* Then go to the path \Cine\src\main\resources\application.properties and once there change spring.datasource.url = jdbc:mysql://localhost: "put the port where you have the mqysl database"/cinedb?serverTimezone=UTC 
+* Make this same change in the path \Cine\targetes\application.properties
+* If you have not configured the JAVA 11, you must go to the environment variables and add a new variable called JAVA_HOME and put the path in which it is installed, if the variable exists you must modify the path that has assigned 
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+### Installation 🔧
 
-```
-Da un ejemplo
-```
+At the time of opening the project will be necessary to open two terminals in the directory of the same, in the first finish will be necessary to execute:
 
-### Instalación 🔧
+### `mvn spring-boot:run`
 
-In the project directory, you can run:
+And in the other terminal must run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
+## Built with 🛠️
 
-_Dí cómo será ese paso_
-
-```
-Da un ejemplo
-```
-
-_Y repite_
-
-```
-hasta finalizar
-```
-
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
-
-## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
-* [React](https://es.reactjs.org/docs/getting-started.html) - El framework web usado
+* [React](https://es.reactjs.org/docs/getting-started.html) - The web framework used
 * [SpringBoot](https://spring.io/projects/spring-boot) - BackEnd
-* [Selenium](https://www.selenium.dev/documentation/en/) - Usado para relizar pruebas
-* [MySQL](https://dev.mysql.com/doc/) - Gestor de base de datos
+* [Selenium](https://www.selenium.dev/documentation/en) - Used for testing
+* [MySQL](https://dev.mysql.com/doc/) - Database manager
 
 ## Autores ✒️
 
-* **Karen Grisales** - *Arquitecta*
-* **Anderson Villa** - *Arquitecta*
+* **Karen Grisales** - *Architect*
+* **Anderson Villa** - *Architect*
 * **Sebastian Ochoa** - *Tester*
-* **Laura Monsalve** - *BackEnd e Integración*
-* **Andrea Calderón** - *FrontEnd e Integración*  
+* **Laura Monsalve** - *BackEnd and Integration*
+* **Andrea Calderón** - *FrontEnd and Integration*  
 
