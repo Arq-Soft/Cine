@@ -26,6 +26,7 @@ span {
   border-right: black 7px double;
   font-size: 0.875em;
 }
+
 #header {
   height: 171px;
   margin-bottom: -8px;
@@ -86,8 +87,37 @@ span {
 #header .row-2 ul li a.active {
     color: #6493ad;
 }
+.navbar{
+  padding-bottom: 30px;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 15px;
+}
+.btn-secondary {
+  color: #fff;
+  background-color: #002a56;
+  border-color: #ffffff;
+  padding: 0px;
+  margin-right: 5px;
+}
 
-
+.btn-secondary:hover {
+  color: #fff;
+  background-color: #1458a2a6;
+  border-color: #ffffff;
+}
+.flex-button{
+  margin-right: -1px;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  padding: 3px;
+}
+.h-100 {
+  height: 100%!important;
+  margin-top: 150px;
+}
 /*LoginComponent*/
 .card {
   height: 370px;
@@ -131,15 +161,11 @@ span {
 }
 /*RegisterComponent*/
 .cardRegister {
-  height: 700px;
-  margin-top: auto;
+  height: 650px;
+  margin-top: 60px;
   margin-bottom: auto;
   width: 500px;
   background-color: rgba(0, 0, 0, 0.5) !important;
-}
-.card-bodyResgister{
-  flex: 1 1 auto;
-  padding: 1.25rem;
 }
 .card-header h3 {
   color: white;
@@ -186,4 +212,14 @@ span {
   color: blue;
   text-decoration: underline blue;
   cursor: pointer;
+}
+.btn:hover{
+  color: #fff; 
+  background-color: #1458a2a6;
+  border-color: #ffffff;
+}
+
+/*PaymentComponent*/
+.payment-method{
+  background: rgba(0, 0, 0, 0.5);
 }

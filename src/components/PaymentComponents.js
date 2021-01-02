@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "../App.css";
-import cars from "../images/carsCarrusel.jpg";
-import prueba2 from "../images/prueba2.jpg";
 import {
   Button,
   ButtonGroup,
@@ -12,66 +10,18 @@ import {
   Nav,
   NavItem,
   UncontrolledDropdown,
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption,
   NavLink,
 } from "reactstrap";
 import { connect } from "react-redux";
-const items = [
-  {
-    src: cars,
-    altText: "First Movie",
-  },
-  {
-    src: prueba2,
-    altText: "Second Movie",
-  },
-];
 
-class MainComponents extends Component {
+class PaymentComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { activeIndex: 0 };
-    this.next = this.next.bind(this);
-    this.previous = this.previous.bind(this);
-    this.goToIndex = this.goToIndex.bind(this);
-    this.onExiting = this.onExiting.bind(this);
-    this.onExited = this.onExited.bind(this);
-  }
-  onExiting() {
-    this.animating = true;
-  }
+    this.state = {
+    };
 
-  onExited() {
-    this.animating = false;
   }
-
-  next() {
-    if (this.animating) return;
-    const nextIndex =
-      this.state.activeIndex === items.length - 1
-        ? 0
-        : this.state.activeIndex + 1;
-    this.setState({ activeIndex: nextIndex });
-  }
-
-  previous() {
-    if (this.animating) return;
-    const nextIndex =
-      this.state.activeIndex === 0
-        ? items.length - 1
-        : this.state.activeIndex - 1;
-    this.setState({ activeIndex: nextIndex });
-  }
-
-  goToIndex(newIndex) {
-    if (this.animating) return;
-    this.setState({ activeIndex: newIndex });
-  }
-
+  
   navigateLogin() {
     this.props.history.push({ pathname: "/login" });
   }
@@ -88,23 +38,6 @@ class MainComponents extends Component {
     this.props.history.push({ pathname: "/home" });
   }
   render() {
-    const { activeIndex } = this.state;
-
-    const slides = items.map((item) => {
-      return (
-        <CarouselItem
-          onExiting={this.onExiting}
-          onExited={this.onExited}
-          key={item.src}
-        >
-          <img src={item.src} alt={item.altText} width="100%" />
-          <CarouselCaption
-            captionText={item.caption || ""}
-            captionHeader={item.caption || ""}
-          />
-        </CarouselItem>
-      );
-    });
     return (
       <div id="main">
         <div id="content">
@@ -149,32 +82,31 @@ class MainComponents extends Component {
           </Navbar>
           <div className="content">
             <ButtonGroup>
-              <Button className="flex-button" onClick={this.navigateHome.bind(this)}>Home</Button>
-              <Button className="flex-button" onClick={this.navigateMovies.bind(this)}>Movies catalogue</Button>
-              <Button className="flex-button" onClick={this.navigateAboutUs.bind(this)}>About us</Button>
+              <Button
+                className="flex-button"
+                onClick={this.navigateHome.bind(this)}
+              >
+                Home
+              </Button>
+              <Button
+                className="flex-button"
+                onClick={this.navigateMovies.bind(this)}
+              >
+                Movies catalogue
+              </Button>
+              <Button
+                className="flex-button"
+                onClick={this.navigateAboutUs.bind(this)}
+              >
+                About us
+              </Button>
             </ButtonGroup>
-            <Carousel 
-              activeIndex={activeIndex}
-              next={this.next}
-              previous={this.previous}
-            >
-              <CarouselIndicators
-                items={items}
-                activeIndex={activeIndex}
-                onClickHandler={this.goToIndex}
-              />
-              {slides}
-              <CarouselControl
-                direction="prev"
-                directionText="Previous"
-                onClickHandler={this.previous}
-              />
-              <CarouselControl
-                direction="next"
-                directionText="Next"
-                onClickHandler={this.next}
-              />
-            </Carousel>
+          </div>
+          <div className="payment">
+            <div className="payment-method">
+                <h3>Select your payment method </h3>
+             
+            </div>
           </div>
         </div>
         <div id="footer">
@@ -202,4 +134,4 @@ const mapDispatchToProps = (state) => {
 export default connect(
   mapStateToprops,
   mapDispatchToProps
-)(withRouter(MainComponents));
+)(withRouter(PaymentComponent));

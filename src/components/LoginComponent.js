@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Alert from "react";
 import { PersonaService } from "../services/PersonaService";
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
@@ -23,6 +24,16 @@ class LoginComponent extends Component {
   navigateRegister() {
     this.props.history.push({ pathname: "/signin" });
   }
+  
+  navigateMovies() {
+    this.props.history.push({ pathname: "/signin" });
+  }
+  navigateAboutUs() {
+    this.props.history.push({ pathname: "/aboutus" });
+  }
+  navigateHome() {
+    this.props.history.push({ pathname: "/home" });
+  }
   handleChange(e) {
     this.setState({
       persona: {
@@ -32,21 +43,27 @@ class LoginComponent extends Component {
     });
   }
   login() {
-    this.personaService
+    if(this.state.persona.username === null & this.state.persona.password === null){
+      alert('All fields are required')
+    }else{
+      this.personaService
       .Login(this.state.persona.username, this.state.persona.password)
       .then((data) => {
         console.log(data);
         this.props.history.push({ pathname: "/home" });
+        alert('asdfgrad')
       })
       .catch((error) => {
         console.log(error);
+        alert('All fields are required')
       });
+    }    
   }
 
   render() {
     return (
       <div className="container">
-        <div className="d-flex justify-content-center h-100">
+        <div className="d-flex justify-content-center h-100" >
           <div className="card">
             <div className="card-header">
               <h3>Sign In</h3>
@@ -82,12 +99,15 @@ class LoginComponent extends Component {
                   />
                 </div>
                 <div className="form-group">
+                <button type="button"
+                    onClick={this.navigateHome.bind(this)}
+                    className="btn float-left login_btn"
+                  >Home</button>
                   <button
                     type="button"
                     onClick={this.login.bind(this)}
                     className="btn float-right login_btn"
-                  >
-                    Login
+                  >Login
                   </button>
                 </div>
               </form>
@@ -95,7 +115,7 @@ class LoginComponent extends Component {
             <div className="card-footer">
               <div className="d-flex justify-content-center links">
                 Don't have an account?
-                <p className="links-access" onClick={this.navigateRegister.bind(this)}>  Sign In</p>
+                <p className="links-access" onClick={this.navigateRegister.bind(this)}>  Sign Up</p>
               </div>
             </div>
           </div>

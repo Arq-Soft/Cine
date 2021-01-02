@@ -44,16 +44,19 @@ class RegisterComponent extends Component {
   navigateLogin() {
     this.props.history.push({ pathname: "/login" });
   }
+  navigateHome() {
+    this.props.history.push({ pathname: "/home" });
+  }
 
   render() {
     return (
       <div className="container">
-        <div className="d-flex justify-content-center h-100">
+        <div className="d-flex justify-content-center h-101">
           <div className="cardRegister">
             <div className="card-header">
               <h3>Register</h3>
             </div>
-            <div className="card-body">
+            <div className="card-body ">
               <form onSubmit={this.handleSubmit}>
                 <div className="input-group">
                   <div className="input-group-prepend">
@@ -260,6 +263,10 @@ class RegisterComponent extends Component {
                 </div>
 
                 <div className="form-group">
+                <button type="button"
+                    onClick={this.navigateHome.bind(this)}
+                    className="btn float-left login_btn"
+                  >Home</button>
                   <button
                     type="button"
                     value="Register"
@@ -269,11 +276,10 @@ class RegisterComponent extends Component {
                 </div>
               </form>
             </div>
-
             <div className="card-footer">
               <div className="d-flex justify-content-center links">
                 Do you have an account?
-                <p className="links-access" onClick={this.navigateLogin.bind(this)}>  Login</p>
+                <p className="links-access" onClick={this.navigateLogin.bind(this)}>  Log in</p>
               </div>
             </div>
           </div>

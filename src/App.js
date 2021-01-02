@@ -4,6 +4,7 @@ import MoviesCatalogue from "./components/MoviesComponent";
 import RegisterComponent from "./components/RegisterComponent";
 import MainComponents from "./components/MainComponent";
 import LoginComponent from "./components/LoginComponent";
+import PaymentComponent from "./components/PaymentComponents";
 import { MOVIES } from "./shared/Movies";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
@@ -23,6 +24,7 @@ class App extends Component {
         <Route path="/login" render={(props) => <LoginComponent {...props} />} />
         <Route path="/signin" render={(props) => <RegisterComponent {...props} />} />
         <Route path="/moviesCatalogue" render={(props) => <MoviesCatalogue {...props} />} />
+        <Route path="/payment" render={(props) => <PaymentComponent {...props} />} />
         <Route path="/test" render={ (props) => <div>testeando</div> } />
         {/* <Route path="/login" render={ (props) => <Login /> }/> */}
         {/* Redirect unhandled routes */}
