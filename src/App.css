@@ -118,6 +118,12 @@ span {
   height: 100%!important;
   margin-top: 150px;
 }
+
+.video-react-player{
+  margin-left: 4cm;
+  height: 7cm;
+  width: 15cm;
+}
 /*LoginComponent*/
 .card {
   height: 370px;

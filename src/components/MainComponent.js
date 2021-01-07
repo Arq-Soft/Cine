@@ -19,7 +19,7 @@ import {
   CarouselCaption,
   NavLink,
 } from "reactstrap";
-import ReactPlayer from 'react-player';
+import ReactPlayer from "react-player";
 import { connect } from "react-redux";
 const items = [
   {
@@ -80,7 +80,7 @@ class MainComponents extends Component {
     this.props.history.push({ pathname: "/signin" });
   }
   navigateMovies() {
-    this.props.history.push({ pathname: "/signin" });
+    this.props.history.push({ pathname: "/moviesCatalogue" });
   }
   navigateAboutUs() {
     this.props.history.push({ pathname: "/aboutus" });
@@ -150,11 +150,26 @@ class MainComponents extends Component {
           </Navbar>
           <div className="content">
             <ButtonGroup>
-              <Button className="flex-button" onClick={this.navigateHome.bind(this)}>Home</Button>
-              <Button className="flex-button" onClick={this.navigateMovies.bind(this)}>Movies catalogue</Button>
-              <Button className="flex-button" onClick={this.navigateAboutUs.bind(this)}>About us</Button>
+              <Button
+                className="flex-button"
+                onClick={this.navigateHome.bind(this)}
+              >
+                Home
+              </Button>
+              <Button
+                className="flex-button"
+                onClick={this.navigateMovies.bind(this)}
+              >
+                Movies catalogue
+              </Button>
+              <Button
+                className="flex-button"
+                onClick={this.navigateAboutUs.bind(this)}
+              >
+                About us
+              </Button>
             </ButtonGroup>
-            <Carousel 
+            <Carousel
               activeIndex={activeIndex}
               next={this.next}
               previous={this.previous}
@@ -176,16 +191,23 @@ class MainComponents extends Component {
                 onClickHandler={this.next}
               />
             </Carousel>
+
+            <div className="inside">
+              <h2> Our rooms </h2>
+            </div>
+            <div className="video-react-player">
+
             <ReactPlayer
-            url='https://www.youtube.com/watch?v=5kE6J0u7-fo'
-            width='100%'
-            height='100%'
-            controls
-            playing
-            muted
-            playbackRate={1.75}
-            onEnded={()=>alert('Terminó el video')}
-            className="react-player"/>
+              url="https://www.youtube.com/watch?v=5kE6J0u7-fo"
+              width="100%"
+              height="100%"
+              controls
+              playing
+              muted
+              playbackRate={1.75}
+              className="react-player"
+            />
+            </div>
           </div>
         </div>
         <div id="footer">
