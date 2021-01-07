@@ -223,3 +223,19 @@ span {
 .payment-method{
   background: rgba(0, 0, 0, 0.5);
 }
+
+/*AboutUsComponent*/
+
+.phase{
+ text-align: center;
+ margin-left: 200px;
+ margin-right: 200px;
+}
+.inside-phase{
+  margin-left: 20px;
+}
+.phase-content{
+font-size: 15px;
+margin: 50px;
+text-align: justify;
+}

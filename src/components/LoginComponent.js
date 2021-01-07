@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Alert from "react";
 import { PersonaService } from "../services/PersonaService";
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
@@ -51,7 +50,7 @@ class LoginComponent extends Component {
       .then((data) => {
         console.log(data);
         this.props.history.push({ pathname: "/home" });
-        alert('asdfgrad')
+        alert('Usuario correcto')
       })
       .catch((error) => {
         console.log(error);

@@ -19,6 +19,7 @@ import {
   CarouselCaption,
   NavLink,
 } from "reactstrap";
+import ReactPlayer from 'react-player';
 import { connect } from "react-redux";
 const items = [
   {
@@ -175,6 +176,16 @@ class MainComponents extends Component {
                 onClickHandler={this.next}
               />
             </Carousel>
+            <ReactPlayer
+            url='https://www.youtube.com/watch?v=5kE6J0u7-fo'
+            width='100%'
+            height='100%'
+            controls
+            playing
+            muted
+            playbackRate={1.75}
+            onEnded={()=>alert('Terminó el video')}
+            className="react-player"/>
           </div>
         </div>
         <div id="footer">
