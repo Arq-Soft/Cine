@@ -30,6 +30,11 @@ class RegisterComponent extends Component {
   }
 
   save() {
+    const requieres = ['id', 'name', 'email'];
+    const isInvalid = requieres.some(key => !this.state.persona[key] );
+    if(isInvalid){
+      alert('los campos requeridos')
+    }else{
     this.personaService
       .save(this.state.persona)
       .then((data) => {
@@ -40,6 +45,7 @@ class RegisterComponent extends Component {
         console.log(error);
       });
   }
+}
 
   navigateLogin() {
     this.props.history.push({ pathname: "/login" });

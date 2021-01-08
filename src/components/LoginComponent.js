@@ -48,13 +48,14 @@ class LoginComponent extends Component {
       this.personaService
       .Login(this.state.persona.username, this.state.persona.password)
       .then((data) => {
+        this.props.Movies = data
         console.log(data);
         this.props.history.push({ pathname: "/home" });
-        alert('Usuario correcto')
+        alert('Valid credentials')
       })
       .catch((error) => {
         console.log(error);
-        alert('All fields are required')
+        alert('Invalid credentials')
       });
     }    
   }
