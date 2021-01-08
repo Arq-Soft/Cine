@@ -4,35 +4,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
-import javax.persistence.UniqueConstraint;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "User", 
-        uniqueConstraints = @UniqueConstraint(columnNames = {"email"})
-        )
-
+@Table(name = "User")
 
 public class User {
 
     @Id
+    // @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "REGIST_DATE")
-    private Date registDate;
 
-    
+    @Column(name = "email", unique = true)
     private String email;
 
     private String password;
@@ -47,11 +36,6 @@ public class User {
     public int getId() {
         return id;
     }
-
-    public Date getRegistDate() {
-        return registDate;
-    }
-
 
     public String getEmail() {
         return email;
@@ -77,7 +61,6 @@ public class User {
         this.name = name;
     }
 
-
     public int getPhone() {
         return phone;
     }
@@ -86,38 +69,36 @@ public class User {
         this.phone = phone;
     }
 
-	public String getLastname() {
-		return lastname;
-	}
+    public String getLastname() {
+        return lastname;
+    }
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
-	public String getId_type() {
-		return id_type;
-	}
+    public String getId_type() {
+        return id_type;
+    }
 
-	public void setId_type(String id_type) {
-		this.id_type = id_type;
-	}
+    public void setId_type(String id_type) {
+        this.id_type = id_type;
+    }
 
-	public String getAdress() {
-		return adress;
-	}
+    public String getAdress() {
+        return adress;
+    }
 
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
 
-	public Long getDate_Birth() {
-		return date_Birth;
-	}
+    public Long getDate_Birth() {
+        return date_Birth;
+    }
 
-	public void setDate_Birth(Long date_Birth) {
-		this.date_Birth = date_Birth;
-	}
-
-
+    public void setDate_Birth(Long date_Birth) {
+        this.date_Birth = date_Birth;
+    }
 
 }

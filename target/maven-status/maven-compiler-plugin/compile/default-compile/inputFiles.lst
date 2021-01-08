@@ -1,5 +1,10 @@
-D:\SISTEMAS\Arqui_Soft\Proyecto\Cine\Cine\src\main\java\com\arquisoft\cine\controller\UserController.java
-D:\SISTEMAS\Arqui_Soft\Proyecto\Cine\Cine\src\main\java\com\arquisoft\cine\model\User.java
-D:\SISTEMAS\Arqui_Soft\Proyecto\Cine\Cine\src\main\java\com\arquisoft\cine\repository\UserRepository.java
-D:\SISTEMAS\Arqui_Soft\Proyecto\Cine\Cine\src\main\java\com\arquisoft\cine\CineApplication.java
-D:\SISTEMAS\Arqui_Soft\Proyecto\Cine\Cine\src\main\java\com\arquisoft\cine\service\UserService.java
+/home/danielamgx/Desktop/Carpetas/Trabajo/Guane/Inception/GitHub/Cine/src/main/java/com/arquisoft/cine/controller/MoviesController.java
+/home/danielamgx/Desktop/Carpetas/Trabajo/Guane/Inception/GitHub/Cine/src/main/java/com/arquisoft/cine/repository/MoviesRepository.java
+/home/danielamgx/Desktop/Carpetas/Trabajo/Guane/Inception/GitHub/Cine/src/main/java/com/arquisoft/cine/service/UserService.java
+/home/danielamgx/Desktop/Carpetas/Trabajo/Guane/Inception/GitHub/Cine/src/main/java/com/arquisoft/cine/model/User.java
+/home/danielamgx/Desktop/Carpetas/Trabajo/Guane/Inception/GitHub/Cine/src/main/java/com/arquisoft/cine/repository/UserRepository.java
+/home/danielamgx/Desktop/Carpetas/Trabajo/Guane/Inception/GitHub/Cine/src/main/java/com/arquisoft/cine/model/Sala.java
+/home/danielamgx/Desktop/Carpetas/Trabajo/Guane/Inception/GitHub/Cine/src/main/java/com/arquisoft/cine/controller/UserController.java
+/home/danielamgx/Desktop/Carpetas/Trabajo/Guane/Inception/GitHub/Cine/src/main/java/com/arquisoft/cine/CineApplication.java
+/home/danielamgx/Desktop/Carpetas/Trabajo/Guane/Inception/GitHub/Cine/src/main/java/com/arquisoft/cine/model/Movies.java
+/home/danielamgx/Desktop/Carpetas/Trabajo/Guane/Inception/GitHub/Cine/src/main/java/com/arquisoft/cine/service/MoviesService.java
