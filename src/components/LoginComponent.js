@@ -25,7 +25,7 @@ class LoginComponent extends Component {
   }
   
   navigateMovies() {
-    this.props.history.push({ pathname: "/signin" });
+    this.props.history.push({ pathname: "/moviesCatalogue" });
   }
   navigateAboutUs() {
     this.props.history.push({ pathname: "/aboutus" });
@@ -48,7 +48,6 @@ class LoginComponent extends Component {
       this.personaService
       .Login(this.state.persona.username, this.state.persona.password)
       .then((data) => {
-        this.props.Movies = data
         console.log(data);
         this.props.history.push({ pathname: "/home" });
         alert('Valid credentials')

@@ -17,11 +17,9 @@ import { connect } from "react-redux";
 class PaymentComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
-
+    this.state = {};
   }
-  
+
   navigateLogin() {
     this.props.history.push({ pathname: "/login" });
   }
@@ -29,7 +27,7 @@ class PaymentComponent extends Component {
     this.props.history.push({ pathname: "/signin" });
   }
   navigateMovies() {
-    this.props.history.push({ pathname: "/signin" });
+    this.props.history.push({ pathname: "/moviesCatalogue" });
   }
   navigateAboutUs() {
     this.props.history.push({ pathname: "/aboutus" });
@@ -104,9 +102,19 @@ class PaymentComponent extends Component {
           </div>
           <div className="payment">
             <div className="payment-method">
-                <h3>Select your payment method </h3>
-             
+              <h3>Select your payment method </h3>
             </div>
+
+            
+
+
+
+
+
+
+
+
+
           </div>
         </div>
         <div id="footer">

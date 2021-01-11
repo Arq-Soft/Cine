@@ -26,7 +26,7 @@ class MainComponents extends Component {
     this.props.history.push({ pathname: "/signin" });
   }
   navigateMovies() {
-    this.props.history.push({ pathname: "/signin" });
+    this.props.history.push({ pathname: "/moviesCatalogue" });
   }
   navigateAboutUs() {
     this.props.history.push({ pathname: "/aboutus" });

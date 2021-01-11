@@ -7,14 +7,12 @@ import LoginComponent from "./components/LoginComponent";
 import PaymentComponent from "./components/PaymentComponents";
 import AboutUsComponent from "./components/AboutUsComponent";
 import ReserveComponents from "./components/ReserveComponent";
-import { MOVIES } from "./shared/Movies";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: MOVIES,
     };
   }
   render() {
@@ -28,7 +26,7 @@ class App extends Component {
         <Route path="/moviesCatalogue" render={(props) => <MoviesCatalogue {...props} />} />
         <Route path="/payment" render={(props) => <PaymentComponent {...props} />} />
         <Route path="/aboutus" render={(props) => <AboutUsComponent {...props} />} />
-        <Route path="/ReserveComponents" render={(props) => <ReserveComponents {...props} />} />
+        <Route path="/reserve" render={(props) => <ReserveComponents {...props} />} />
         <Route path="/test" render={ (props) => <div>testeando</div> } />
         {/* <Route path="/login" render={ (props) => <Login /> }/> */}
         {/* Redirect unhandled routes */}

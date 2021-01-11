@@ -123,6 +123,13 @@ span {
   margin-left: 4cm;
   height: 7cm;
   width: 15cm;
+  margin-bottom:1cm;
+}
+
+.inside-rooms{
+  margin-top: 1cm;
+  margin-bottom: 0.5cm;
+  color: #002a56;
 }
 /*LoginComponent*/
 .card {

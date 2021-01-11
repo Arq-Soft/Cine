@@ -47,11 +47,22 @@ class ReserveComponents extends Component {
             "E3",
             "E4",
             "E5",
-            "E6"
+            "E6",
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "G1",
+            "G2",
+            "G3",
+            "G4",
+            "G5",
+            "G6"
         ],
 
         selectedseat:[
-
         ]
     };
   }
@@ -63,7 +74,7 @@ class ReserveComponents extends Component {
     this.props.history.push({ pathname: "/signin" });
   }
   navigateMovies() {
-    this.props.history.push({ pathname: "/signin" });
+    this.props.history.push({ pathname: "/moviesComponents" });
   }
   navigateAboutUs() {
     this.props.history.push({ pathname: "/aboutus" });

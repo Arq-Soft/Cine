@@ -128,6 +128,7 @@ class RegisterComponent extends Component {
                       });
                     }}
                     type="text"
+                    pattern="/^[0-9]$/"
                     className="form-control"
                     placeholder="Id"
                   />
@@ -150,6 +151,7 @@ class RegisterComponent extends Component {
                         return { persona };
                       });
                     }}
+                    pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/"
                     type="email"
                     className="form-control"
                     placeholder="Email"

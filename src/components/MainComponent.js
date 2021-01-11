@@ -144,6 +144,18 @@ class MainComponents extends Component {
                     </NavItem>
                   </Button>
                 )}
+                <p>
+                <NavItem>
+                    {this.props.auth_token ? (
+                      <NavLink onClick={this.navigateLogin.bind(this)}>
+                        Bienvenido
+                      </NavLink>
+                    ) : (
+                      <NavLink onClick={this.navigateLogin.bind(this)}>
+                      </NavLink>
+                    )}
+                  </NavItem>
+                  </p>
                 <UncontrolledDropdown nav inNavbar></UncontrolledDropdown>
               </Nav>
             </Collapse>
@@ -192,13 +204,13 @@ class MainComponents extends Component {
               />
             </Carousel>
 
-            <div className="inside">
+            <div className="inside-rooms">
               <h2> Our rooms </h2>
             </div>
             <div className="video-react-player">
 
             <ReactPlayer
-              url="https://www.youtube.com/watch?v=5kE6J0u7-fo"
+              url="https://youtu.be/bbd10ZJWdSo"
               width="100%"
               height="100%"
               controls
