@@ -22,7 +22,7 @@ At the time of opening the project will be necessary to open two terminals in th
 ### `mvn spring-boot:run`
 
 And in the other terminal must run:
-
+### `npm install`
 ### `npm start`
 
 Runs the app in the development mode.
