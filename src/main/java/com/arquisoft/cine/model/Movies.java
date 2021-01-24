@@ -27,7 +27,10 @@ public class Movies {
     private String country;
     private String genre;
     private String language;
+    private String roomCode;
+    private String synopsis;
     private String image;
+
 
     public int getId() {
         return id;
@@ -95,6 +98,22 @@ public class Movies {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getRoomCode() {
+        return roomCode;
+    }
+
+    public void setRoomCode(String roomCode) {
+        this.roomCode = roomCode;
+    }
+
+    public String getSynopsis() {
+        return synopsis;
+    }
+
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
     }
 
 }
