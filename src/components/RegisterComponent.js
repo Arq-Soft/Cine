@@ -30,7 +30,7 @@ class RegisterComponent extends Component {
   }
 
   save() {
-    const requieres = ['id', 'name', 'email'];
+    const requieres = ['id', 'name', 'email', 'phone', 'password', 'lastname', 'id_type', 'adress', 'date_birth'];
     const isInvalid = requieres.some(key => !this.state.persona[key] );
     if(isInvalid){
       alert('los campos requeridos')

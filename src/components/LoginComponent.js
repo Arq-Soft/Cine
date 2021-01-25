@@ -53,10 +53,7 @@ class LoginComponent extends Component {
         if(data){
           console.log("Respuesta login" + data);
           this.props.setAuthToken(data);
-          setTimeout(() => {
-           console.log(this.state.auth_token) 
-          }, 1000);
-          //this.props.history.push({ pathname: "/home" });
+          this.props.history.push({ pathname: "/home" });
           alert('Valid credentials')
         }else{
           alert('Invalid credentials')

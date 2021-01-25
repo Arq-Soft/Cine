@@ -16,7 +16,7 @@ class MoviesCatalogue extends Component {
   }
 
   navigatePayment() {
-    this.props.history.push({ pathname: "/ReserveComponents" });
+    this.props.history.push({ pathname: "/reserve" });
   }
   navigateLogin() {
     this.props.history.push({ pathname: "/login" });
@@ -146,13 +146,7 @@ const mapStateToprops = (state) => {
   };
 };
 
-const mapDispatchToProps = (state) => {
-  return {
-    auth_token: state.auth_token,
-  };
-};
 
 export default connect(
-  mapStateToprops,
-  mapDispatchToProps
+  mapStateToprops
 )(withRouter(MoviesCatalogue));

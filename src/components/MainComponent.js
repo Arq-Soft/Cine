@@ -238,13 +238,13 @@ const mapStateToprops = (state) => {
 };
 
 // ARREGLARLO PARA LOG OUT
-const mapDispatchToProps = (state) => {
+/*const mapDispatchToProps = (state) => {
   return {
     auth_token: state.auth_token,
   };
-};
+};*/
+
 
 export default connect(
-  mapStateToprops,
-  mapDispatchToProps
+  mapStateToprops
 )(withRouter(MainComponents));
