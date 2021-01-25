@@ -41,7 +41,7 @@ public class RoomsService {
     public Rooms updateRooms(Rooms Rooms) {
         Rooms existingRooms = repository.findById(Rooms.getId()).orElse(null);
         existingRooms.setName(Rooms.getName());
-        existingRooms.settotal_capacity(Rooms.gettotal_capacity());
+        existingRooms.setTotal_capacity(Rooms.getTotal_capacity());
         return repository.save(existingRooms);
     }
 
