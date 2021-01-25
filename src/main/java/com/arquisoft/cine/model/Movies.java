@@ -14,7 +14,7 @@ import javax.persistence.GenerationType;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Sala")
+@Table(name = "Movies")
 public class Movies {
 
     @Id
