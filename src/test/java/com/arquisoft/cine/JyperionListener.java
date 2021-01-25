@@ -172,7 +172,7 @@ public class JyperionListener implements ITestListener {
 		
 		try {
 			this.document.add(p);
-			this.document.add(new Paragraph(new Date().toString()));
+			//this.document.add(new Paragraph(new Date().toString()));
 		} catch (DocumentException e1) {
 			e1.printStackTrace();
 		}
