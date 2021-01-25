@@ -25,6 +25,11 @@ import org.openqa.selenium.By;
 public class CineAppSeleniumTests {
 	private WebDriver driver;
 
+	@BeforeTest
+	public void preTests(){
+		DataProviderClass.generarRandoms();
+	}
+
 	@BeforeMethod
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver", "./src/main/resources/testResources/chromedriver.exe");
@@ -140,7 +145,7 @@ public class CineAppSeleniumTests {
 	/**
 	 * Prueba el registro correcto de un cliente
 	 */
-	@Test(priority = 2)
+	@Test(priority = 2, dataProviderClass = DataProviderClass.class, dataProvider = "RegistroNuevoData")
 	public void registroNuevo() {
 		assertTrue("1"=="2");
 	}
@@ -148,8 +153,9 @@ public class CineAppSeleniumTests {
 	/**
 	 * Prueba el registro de un cliente que ya está registrado
 	 */
-	@Test(priority = 3)
+	@Test(priority = 3, dataProviderClass = DataProviderClass.class, dataProvider = "RegistroNuevoData")
 	public void registroDuplicado() {
+
 		assertTrue("1"=="2");
 	}
 
@@ -164,9 +170,9 @@ public class CineAppSeleniumTests {
 	/**
 	 * Prueba que no acepte registros donde falten datos
 	 */
-	@Test(priority = 2)
+	@Test(priority = 1, dataProviderClass = DataProviderClass.class, dataProvider = "RegistroDatosFaltantesData")
 	public void registroDatosFaltantes() {
-
+		
 		assertTrue("1"=="2");
 	}
 
@@ -175,7 +181,7 @@ public class CineAppSeleniumTests {
 	 * 
 	 * @throws InterruptedException
 	 */
-	@Test(priority = 2)
+	@Test(priority = 1)
 	public void registroVacio() throws InterruptedException {
 		Alert alerta;
 		driver.findElement(By.linkText("Sign Up")).click();
