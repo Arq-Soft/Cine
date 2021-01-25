@@ -71,7 +71,7 @@ class RegisterComponent extends Component {
                     </span>
                   </div>
                   <input
-                    value={this.state.persona.name}
+                    value={this.state.persona.name || ""}
                     id="name"
                     onChange={(e) => {
                       let val = e.target.value;
@@ -94,7 +94,7 @@ class RegisterComponent extends Component {
                     </span>
                   </div>
                   <input
-                    value={this.state.value}
+                    value={this.state.value || ""}
                     id="lastname"
                     onChange={(e) => {
                       let val = e.target.value;
@@ -117,7 +117,7 @@ class RegisterComponent extends Component {
                     </span>
                   </div>
                   <input
-                    value={this.state.persona.id}
+                    value={this.state.persona.id || ""}
                     id="id"
                     onChange={(e) => {
                       let val = e.target.value;
@@ -141,7 +141,7 @@ class RegisterComponent extends Component {
                     </span>
                   </div>
                   <input
-                    value={this.state.persona.email}
+                    value={this.state.persona.email || ""}
                     id="email"
                     onChange={(e) => {
                       let val = e.target.value;
@@ -165,7 +165,7 @@ class RegisterComponent extends Component {
                     </span>
                   </div>
                   <input
-                    value={this.state.persona.password}
+                    value={this.state.persona.password || ""}
                     id="password"
                     onChange={(e) => {
                       let val = e.target.value;
@@ -185,7 +185,7 @@ class RegisterComponent extends Component {
                   <div className="input-group-prepend"></div>
                   <label className="combobox">Choose a identification</label>
                   <select
-                    value={this.state.value}
+                    value={this.state.value || ""}
                     id="id_type"
                     onChange={(e) => {
                       let val = e.target.value;
@@ -210,7 +210,7 @@ class RegisterComponent extends Component {
                     </span>
                   </div>
                   <input
-                    value={this.state.value}
+                    value={this.state.value || ""}
                     id="adress"
                     onChange={(e) => {
                       let val = e.target.value;
@@ -233,7 +233,7 @@ class RegisterComponent extends Component {
                     </span>
                   </div>
                   <input
-                    value={this.state.persona.phone}
+                    value={this.state.persona.phone || ""}
                     id="phone"
                     onChange={(e) => {
                       let val = e.target.value;

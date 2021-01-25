@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { Media } from "reactstrap";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -8,8 +8,11 @@ class MoviesCatalogue extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Movies: [],
+      Movies: [
+       
+      ],
     };
+    this.catalogueMovies()
   }
 
   navigatePayment() {
@@ -30,16 +33,27 @@ class MoviesCatalogue extends Component {
   navigateHome() {
     this.props.history.push({ pathname: "/home" });
   }
-  
+  mostrar() {
+    console.log(this.props.auth_token);
+  }
   catalogueMovies() {
+      fetch("http://localhost:9191/Movies")
+    .then(res => res.json()).then(data => {
+      console.log(data)
+      this.setState({...this.state, Movies:data})
+    })
+    }
+
+  
+    /*
       this.MoviesService
       .getAll().then((data) => {
         console.log(data);
       })
       .catch((error) => {
         console.log(error);
-      });
-    } 
+      });*/
+    
 
   render() {
     const catalogue = this.state.Movies.map((movie) => {
@@ -50,37 +64,44 @@ class MoviesCatalogue extends Component {
               <Media
                 className="movie-cover"
                 object
-                src={movie.Image}
-                alt={movie.Image}
+                src={movie.image}
+                alt={movie.image}
               />
             </Media>
             <Media body className="ml-5">
-              <h1>{movie.Name}</h1>
-              <p className="movie-synopsis">{movie.Synopsis}</p>
+              <h1>{movie.name}</h1>
+              <p className="movie-synopsis">{movie.synopsis}</p>
               <Media body className="ml-0">
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-lg-3">
                       <h5>Duration: </h5>
                       <h6 className="movie-duration">
-                        {movie.RunninTime + " Min"}
+                        {movie.runnin_time + " Min"}
                       </h6>
                     </div>
                     <div className="col-lg-3">
                       <h5>Classification: </h5>
                       <h6 className="movie-classification">
-                        {movie.Classification}
+                        {movie.classification}
                       </h6>
                     </div>
                     <div className="col-lg-3">
                       <h5>Directed by: </h5>
-                      <h6 className="movie-director">{movie.DirectedBy}</h6>
+                      <h6 className="movie-director">{movie.directed_by}</h6>
                     </div>
                     <div className="col-lg-3">
                       <h5>Genre: </h5>
-                      <h6 className="movie-genre">{movie.Genre} </h6>
+                      <h6 className="movie-genre">{movie.genre} </h6>
                     </div>
                   </div>
+                  <button
+                type="button"
+                onClick= {this.mostrar.bind(this)}
+                className="btn float-left login_btn"
+              >
+                Click{" "}
+              </button>
                 </div>
               </Media>
             </Media>

@@ -17,56 +17,20 @@ class ReserveComponents extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        seat:[
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5",
-            "A6",
-            "B1",
-            "B2",
-            "B3",
-            "B4",
-            "B5",
-            "B6",
-            "C1",
-            "C2",
-            "C3",
-            "C4",
-            "C5",
-            "C6",
-            "D1",
-            "D2",
-            "D3",
-            "D4",
-            "D5",
-            "D6",
-            "E1",
-            "E2",
-            "E3",
-            "E4",
-            "E5",
-            "E6",
-            "F1",
-            "F2",
-            "F3",
-            "F4",
-            "F5",
-            "F6",
-            "G1",
-            "G2",
-            "G3",
-            "G4",
-            "G5",
-            "G6"
-        ],
+      seat: [
+        "A1","A2","A3","A4","A5",
+        "B1","B2","B3","B4","B5",
+        "C1","C2","C3","C4","C5",
+        "D1","D2","D3","D4","D5",
+        "E1","E2","E3","E4","E5",
+        "F1","F2","F3","F4","F5",
+        "G1","G2","G3","G4","G5",
+      ],
 
-        selectedseat:[
-        ]
+      selectedseat: [],
     };
   }
-  
+
   navigateLogin() {
     this.props.history.push({ pathname: "/login" });
   }
@@ -83,19 +47,19 @@ class ReserveComponents extends Component {
     this.props.history.push({ pathname: "/home" });
   }
 
-  onchairClick(chair){
+  onchairClick(chair) {
     console.log(chair);
     let newChairs = this.state.selectedseat;
-    if(this.state.selectedseat.includes(chair)){
+    if (this.state.selectedseat.includes(chair)) {
       // sacarlo
-      newChairs = newChairs.filter(c => c != chair);
-    }else{
-      newChairs.push(chair);     
+      newChairs = newChairs.filter((c) => c != chair);
+    } else {
+      newChairs.push(chair);
     }
-    this.setState({ ...this.state, selectedseat: newChairs })
+    this.setState({ ...this.state, selectedseat: newChairs });
     setTimeout(() => {
-        console.log(this.state.selectedseat)
-      }, 10);
+      console.log(this.state.selectedseat);
+    }, 10);
   }
   render() {
     return (
@@ -163,11 +127,36 @@ class ReserveComponents extends Component {
             </ButtonGroup>
           </div>
         </div>
-        
-        <div className="border border-danger col-6">
-            {this.state.seat.map((seat)=>{
-                return (<button key={seat} onClick={this.onchairClick.bind(this, seat)} style={ this.state.selectedseat.includes(seat) ? { background: 'red' } : { background: 'transparent' } }>{seat}</button>);
-            })}
+
+        <div class="row">
+          <div class="col">
+              <ul>
+                  
+                <li>HORA</li>
+              </ul>
+
+
+          </div>
+          <div class="col">
+            <div className="border border-danger col-6">
+              {this.state.seat.map((seat) => {
+                return (
+                  <button
+                    className="chairs"
+                    key={seat}
+                    onClick={this.onchairClick.bind(this, seat)}
+                    style={
+                      this.state.selectedseat.includes(seat)
+                        ? { color: "#fff", background: "#1458a2a6"}
+                        : { background: "transparent" }
+                    }
+                  >
+                    {seat}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         <div id="footer">
@@ -180,4 +169,4 @@ class ReserveComponents extends Component {
   }
 }
 
-export default (withRouter(ReserveComponents));
+export default withRouter(ReserveComponents);
