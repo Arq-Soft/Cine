@@ -42,15 +42,22 @@ class LoginComponent extends Component {
     });
   }
   login() {
-    if(this.state.persona.username === null & this.state.persona.password === null){
+    console.log(this.state.persona)
+    const {username,password} = this.state.persona;
+    if(username === "" || password === ""){
       alert('All fields are required')
     }else{
       this.personaService
-      .Login(this.state.persona.username, this.state.persona.password)
+      .Login(username, password)
       .then((data) => {
-        console.log(data);
-        this.props.history.push({ pathname: "/home" });
-        alert('Valid credentials')
+        if(data){
+          console.log("Respuesta login" + data);
+          this.props.setAuthToken(data);
+          this.props.history.push({ pathname: "/home" });
+          alert('Valid credentials')
+        }else{
+          alert('Invalid credentials')
+        }        
       })
       .catch((error) => {
         console.log(error);

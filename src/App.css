@@ -252,3 +252,11 @@ font-size: 15px;
 margin: 50px;
 text-align: justify;
 }
+/*ReserveComponents*/
+.chairs{
+  width:35px;
+  height:30px;
+  text-align: center;
+  cursor: pointer;
+  
+}
