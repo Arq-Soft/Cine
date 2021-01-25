@@ -94,7 +94,7 @@ class RegisterComponent extends Component {
                     </span>
                   </div>
                   <input
-                    value={this.state.value || ""}
+                    value={this.state.persona.lastname || ""}
                     id="lastname"
                     onChange={(e) => {
                       let val = e.target.value;
@@ -185,7 +185,7 @@ class RegisterComponent extends Component {
                   <div className="input-group-prepend"></div>
                   <label className="combobox">Choose a identification</label>
                   <select
-                    value={this.state.value || ""}
+                    value={this.state.persona.id_type || ""}
                     id="id_type"
                     onChange={(e) => {
                       let val = e.target.value;
@@ -210,7 +210,7 @@ class RegisterComponent extends Component {
                     </span>
                   </div>
                   <input
-                    value={this.state.value || ""}
+                    value={this.state.persona.adress || ""}
                     id="adress"
                     onChange={(e) => {
                       let val = e.target.value;
