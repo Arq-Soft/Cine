@@ -4,14 +4,11 @@ import "../App.css";
 import {
   Button,
   ButtonGroup,
-  Collapse,
   Navbar,
   NavbarBrand,
-  Nav,
-  NavItem,
-  UncontrolledDropdown,
-  NavLink,
 } from "reactstrap";
+import Select from 'react-select';
+
 
 class ReserveComponents extends Component {
   constructor(props) {
@@ -30,6 +27,7 @@ class ReserveComponents extends Component {
       selectedseat: [],
     };
   }
+  
 
   navigateLogin() {
     this.props.history.push({ pathname: "/login" });
@@ -76,33 +74,7 @@ class ReserveComponents extends Component {
                 </div>
               </div>
             </NavbarBrand>
-            <Collapse navbar>
-              <Nav className="mr-auto" navbar>
-                <Button>
-                  <NavItem>
-                    {this.props.auth_token ? (
-                      <NavLink onClick={this.navigateLogin.bind(this)}>
-                        Log out
-                      </NavLink>
-                    ) : (
-                      <NavLink onClick={this.navigateLogin.bind(this)}>
-                        Log in
-                      </NavLink>
-                    )}
-                  </NavItem>
-                </Button>
-                {!this.props.auth_token && (
-                  <Button>
-                    <NavItem>
-                      <NavLink onClick={this.navigateRegister.bind(this)}>
-                        Sign Up
-                      </NavLink>
-                    </NavItem>
-                  </Button>
-                )}
-                <UncontrolledDropdown nav inNavbar></UncontrolledDropdown>
-              </Nav>
-            </Collapse>
+            
           </Navbar>
           <div className="content">
             <ButtonGroup>
@@ -130,8 +102,11 @@ class ReserveComponents extends Component {
 
         <div class="row">
           <div class="col">
+            <Select>
+
+            </Select>
               <ul>
-                  
+                
                 <li>HORA</li>
               </ul>
 

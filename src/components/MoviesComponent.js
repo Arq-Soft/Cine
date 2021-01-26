@@ -2,7 +2,12 @@ import React, { Component, useEffect, useState } from "react";
 import { Media } from "reactstrap";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { MoviesService } from "../services/MoviesService";
+import {
+  Button,
+  ButtonGroup,
+  Navbar,
+  NavbarBrand,
+} from "reactstrap";
 
 class MoviesCatalogue extends Component {
   constructor(props) {
@@ -58,7 +63,8 @@ class MoviesCatalogue extends Component {
   render() {
     const catalogue = this.state.Movies.map((movie) => {
       return (
-        <div key={movie.id} className="col-12 mt-5">
+        
+        <div key={movie.id} className="col-12 mt-5">          
           <Media tag="li">
             <Media left middle>
               <Media
@@ -95,13 +101,7 @@ class MoviesCatalogue extends Component {
                       <h6 className="movie-genre">{movie.genre} </h6>
                     </div>
                   </div>
-                  <button
-                type="button"
-                onClick= {this.mostrar.bind(this)}
-                className="btn float-left login_btn"
-              >
-                Click{" "}
-              </button>
+                  
                 </div>
               </Media>
             </Media>
@@ -132,6 +132,37 @@ class MoviesCatalogue extends Component {
 
     return (
       <div className="container">
+        <div id="content">
+          <Navbar color="fixed" light expand="md">
+            <NavbarBrand>
+              <div id="slogan">
+                <div className="image png"></div>
+                <div className="inside">
+                  <h2>
+                    Cinema <span>Paradiso</span>
+                  </h2>
+                </div>
+              </div>
+            </NavbarBrand>
+            
+          </Navbar>
+          <div className="content">
+            <ButtonGroup>
+              <Button
+                className="flex-button"
+                onClick={this.navigateHome.bind(this)}
+              >
+                Home
+              </Button>
+              <Button
+                className="flex-button"
+                onClick={this.navigateAboutUs.bind(this)}
+              >
+                About us
+              </Button>
+            </ButtonGroup>
+          </div>
+        </div>
         <div className="row">
           <Media list>{catalogue}</Media>
         </div>
