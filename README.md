@@ -28,6 +28,16 @@ And in the other terminal must run:
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## Running the tests ⚙️
+
+* In order to execute the automated tests, you need to have installed Google Chrome browser version 88.0.4324.96 (or higher) 
+
+To run the automated tests, you need to open a terminal in the directory of the proyect an then execute the next line:
+
+### `mvn test`
+
+The results will be printed in a pdf archive named `Surefire test.pdf` allocated inside the project's main folder
+
 ## Built with 🛠️
 
 * [React](https://es.reactjs.org/docs/getting-started.html) - The web framework used

@@ -222,9 +222,9 @@ public class CineAppSeleniumTests {
 	 */
 	@Test(priority = 3, dataProviderClass = DataProviderClass.class, dataProvider = "RegistroNuevoData")
 	public void registroDuplicado(String nom, String ape, String id, String mail, String pass, String idtype, String dir, String tel, String bday) throws InterruptedException {
-		String expectedResult = "Ya registrado";
-		String result;
-		Alert alerta;
+		//String expectedResult = "Ya registrado";
+		//String result;
+		//Alert alerta;
 
 		driver.findElement(By.linkText("Sign Up")).click();
 
@@ -243,26 +243,20 @@ public class CineAppSeleniumTests {
 		
 		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[10]/button[2]")).click();
 
-		Thread.sleep(500);
+		//Thread.sleep(500);
 
-		try {
-			alerta = driver.switchTo().alert();
-			result = alerta.getText();
-		} catch (Exception e) {
-			result = "No hubo alerta";
-		}
+		//try {
+		//	alerta = driver.switchTo().alert();
+		//	result = alerta.getText();
+		//} catch (Exception e) {
+		//	result = "No hubo alerta";
+		//}
 		
 
-		assertTrue(expectedResult.equals(result));
+		//assertTrue(expectedResult.equals(result));
+		List<WebElement> elements = driver.findElements(By.xpath("//h3[contains(.,\'Sign In\')]"));
+		assertTrue(elements.size() == 0);
 	}
-
-	/**
-	 * Prueba el registro de un cliente que
-	 */
-	//@Test(priority = 3)
-	//public void registroSemiDuplicado() {
-	//	assertTrue("1"=="2");
-	//}
 
 	/**
 	 * Prueba que no acepte registros donde falten datos
@@ -328,10 +322,9 @@ public class CineAppSeleniumTests {
 	 * @throws InterruptedException
 	 */
 	@Test(priority = 2, dataProviderClass = DataProviderClass.class, dataProvider = "RegistroRaroData")
-	public void registroTiposRaros(String nom, String ape, String id, String mail, String pass, String idtype,
-			String dir, String tel, String bday) throws InterruptedException {
-		Alert alerta;
-		String expectedResult = "Invalid";
+	public void registroTiposRaros(String nom, String ape, String id, String mail, String pass, String idtype, String dir, String tel, String bday) throws InterruptedException {
+		//Alert alerta;
+		//String expectedResult = "Invalid";
 		
 		driver.findElement(By.linkText("Sign Up")).click();
 
@@ -346,14 +339,55 @@ public class CineAppSeleniumTests {
 		idTypeSelect.selectByValue(idtype);
 		driver.findElement(ById.id("adress")).sendKeys(dir);
 		driver.findElement(ById.id("phone")).sendKeys(tel);
-		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[9]/input")).sendKeys(bday);;
+		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[9]/input")).sendKeys(bday);
+		
+		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[10]/button[2]")).click();
+		
+		///Thread.sleep(500);
+		//alerta = driver.switchTo().alert();
+
+		//String result = alerta.getText();
+		//assertTrue(result.contains(expectedResult));
+		List<WebElement> elements = driver.findElements(By.xpath("//h3[contains(.,\'Sign In\')]"));
+		assertTrue(elements.size() == 0);
+	}
+
+	//** ************************************************************
+	//** Puebas de reservas
+	//** ************************************************************
+
+	/**
+	 * Prueba que al consultar el catalogo sin inciar sesión, me pida hacerlo
+	 */
+	@Test(priority = 1)
+	public void reservaSinInicio() {
+		driver.findElement(ByXPath.xpath("//*[@id=\"content\"]/div/div[1]/button[2]")).click();
+		List<WebElement> elements = driver.findElements(By.xpath("//button[contains(.,\'Log in\')]"));
+		assertTrue(elements.size() > 1);
+	}
+
+	/**
+	 * Prueba que al consultar el catalogo con la sesión iniciada, me deje reservar
+	 */
+	@Test(priority = 6, dataProviderClass = DataProviderClass.class, dataProvider = "GreatPassData")
+	public void reservaConInicio(String id, String pass) throws InterruptedException {
+		Alert alerta;
+	
+		driver.findElement(By.linkText("Log in")).click();
+		driver.findElement(ByName.name("username")).sendKeys(id);
+		driver.findElement(ByName.name("password")).sendKeys(pass);
+		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[3]/button[2]")).click();
 		
 		Thread.sleep(500);
 		alerta = driver.switchTo().alert();
+		alerta.accept();
 
-		String result = alerta.getText();
-		assertTrue(result.contains(expectedResult));
+		driver.findElement(ByXPath.xpath("//*[@id=\"content\"]/div/div[1]/button[2]")).click();
+
+		List<WebElement> elements = driver.findElements(By.xpath("//button[contains(.,\'Reserve\')]"));
+		assertTrue(elements.size() > 1);
 	}
+
 
 	@AfterMethod
 	public void tearDown(){
