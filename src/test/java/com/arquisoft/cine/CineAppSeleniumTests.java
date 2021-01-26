@@ -6,13 +6,11 @@ import static org.testng.Assert.*;
 
 //Imports de JAVA
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 //Imports de Selenium
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.By.ByClassName;
 import org.openqa.selenium.By.ById;
 import org.openqa.selenium.By.ByName;
 import org.openqa.selenium.By.ByXPath;
@@ -23,7 +21,7 @@ import org.openqa.selenium.By;
 
 //Otros imports
 
-//@Listeners(JyperionListener.class)
+@Listeners(JyperionListener.class)
 public class CineAppSeleniumTests {
 	private WebDriver driver;
 
@@ -98,9 +96,22 @@ public class CineAppSeleniumTests {
 	/**
 	 * Comprueba que no deje inciar sesión si sólo la contraseña es incorrecta
 	 */
-	@Test(priority = 3)
-	public void loginContrasenaIncorrecta() {
-		assertTrue(true);
+	@Test(priority = 3, dataProviderClass = DataProviderClass.class, dataProvider = "WrongPassData")
+	public void loginContrasenaIncorrecta(String id, String pass) throws InterruptedException {
+		Alert alerta;
+
+		driver.findElement(By.linkText("Log in")).click();
+		driver.findElement(ByName.name("username")).sendKeys(id);
+		driver.findElement(ByName.name("password")).sendKeys(pass);
+		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[3]/button[2]")).click();
+		
+		Thread.sleep(500);
+		alerta = driver.switchTo().alert();
+
+		String result = alerta.getText();
+		String expectedResult = "Invalid credentials";
+
+		assertTrue(result.equals(expectedResult));
 	}
 
 	/**
@@ -126,17 +137,48 @@ public class CineAppSeleniumTests {
 	/**
 	 * Prueba el inicio de sesión de un cliente registrado que introdujo sus datos correctamente
 	 */
-	@Test(priority = 4)
-	public void loginCorrecto() {
+	@Test(priority = 4, dataProviderClass = DataProviderClass.class, dataProvider = "GreatPassData")
+	public void loginCorrecto(String id, String pass) throws InterruptedException {
+			Alert alerta;
+	
+			driver.findElement(By.linkText("Log in")).click();
+			driver.findElement(ByName.name("username")).sendKeys(id);
+			driver.findElement(ByName.name("password")).sendKeys(pass);
+			driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[3]/button[2]")).click();
+			
+			Thread.sleep(500);
+			alerta = driver.switchTo().alert();
+	
+			String result = alerta.getText();
+			String expectedResult = "Valid credentials";
+	
+			assertTrue(result.equals(expectedResult));
+
 		assertTrue(true);
 	}
 
 	/**
 	 * Prueba el salida de sesión
+	 * 
+	 * @throws InterruptedException
 	 */
-	@Test(priority = 5)
-	public void logout() {
-		assertTrue("1"=="2");
+	@Test(priority = 5, dataProviderClass = DataProviderClass.class, dataProvider = "GreatPassData")
+	public void logout(String id, String pass) throws InterruptedException {
+		Alert alerta;
+	
+		driver.findElement(By.linkText("Log in")).click();
+		driver.findElement(ByName.name("username")).sendKeys(id);
+		driver.findElement(ByName.name("password")).sendKeys(pass);
+		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[3]/button[2]")).click();
+		
+		Thread.sleep(500);
+		alerta = driver.switchTo().alert();
+		alerta.accept();
+
+		
+		driver.findElement(ByXPath.xpath("//*[@id=\"content\"]/nav/div/ul/button/li/a")).click();
+		List<WebElement> elements = driver.findElements(By.xpath("//h3[contains(.,\'Sign In\')]"));
+		assertTrue(elements.size() == 1);
 	}
 
 
@@ -149,9 +191,10 @@ public class CineAppSeleniumTests {
 	 */
 	@Test(priority = 2, dataProviderClass = DataProviderClass.class, dataProvider = "RegistroNuevoData")
 	public void registroNuevo(String nom, String ape, String id, String mail, String pass, String idtype, String dir, String tel, String bday) {
+		String expectedResult = "Sign In";
+		
 		driver.findElement(By.linkText("Sign Up")).click();
 
-		String expectedResult = "Sign In";
 		Select idTypeSelect = new Select(driver.findElement(ById.id("id_type")));
 
 		driver.findElement(ById.id("name")).sendKeys(nom);
@@ -165,20 +208,52 @@ public class CineAppSeleniumTests {
 		driver.findElement(ById.id("phone")).sendKeys(tel);
 		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[9]/input")).sendKeys(bday);;
 		
-		//driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[10]/button[2]")).click();
+		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[10]/button[2]")).click();
 
-		//String result = driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[1]/h3")).getText();
+		String result = driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[1]/h3")).getText();
 		
-		//assertTrue(expectedResult.equals(result));
+		assertTrue(expectedResult.equals(result));
 	}
 
 	/**
 	 * Prueba el registro de un cliente que ya está registrado
+	 * 
+	 * @throws InterruptedException
 	 */
-	@Test(priority = 3)// dataProviderClass = DataProviderClass.class, dataProvider = "RegistroNuevoData")
-	public void registroDuplicado() {
+	@Test(priority = 3, dataProviderClass = DataProviderClass.class, dataProvider = "RegistroNuevoData")
+	public void registroDuplicado(String nom, String ape, String id, String mail, String pass, String idtype, String dir, String tel, String bday) throws InterruptedException {
+		String expectedResult = "Ya registrado";
+		String result;
+		Alert alerta;
 
-		assertTrue("1"=="2");
+		driver.findElement(By.linkText("Sign Up")).click();
+
+		Select idTypeSelect = new Select(driver.findElement(ById.id("id_type")));
+
+		driver.findElement(ById.id("name")).sendKeys(nom);
+		driver.findElement(ById.id("lastname")).sendKeys(ape);
+		driver.findElement(ById.id("id")).sendKeys(id);
+		driver.findElement(ById.id("email")).sendKeys(mail);
+		driver.findElement(ById.id("password")).sendKeys(pass);
+		idTypeSelect.selectByValue("Identity card");
+		idTypeSelect.selectByValue(idtype);
+		driver.findElement(ById.id("adress")).sendKeys(dir);
+		driver.findElement(ById.id("phone")).sendKeys(tel);
+		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[9]/input")).sendKeys(bday);;
+		
+		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[10]/button[2]")).click();
+
+		Thread.sleep(500);
+
+		try {
+			alerta = driver.switchTo().alert();
+			result = alerta.getText();
+		} catch (Exception e) {
+			result = "No hubo alerta";
+		}
+		
+
+		assertTrue(expectedResult.equals(result));
 	}
 
 	/**
@@ -191,11 +266,39 @@ public class CineAppSeleniumTests {
 
 	/**
 	 * Prueba que no acepte registros donde falten datos
+	 * 
+	 * @throws InterruptedException
 	 */
-	@Test(priority = 1)//dataProviderClass = DataProviderClass.class, dataProvider = "RegistroDatosFaltantesData")
-	public void registroDatosFaltantes() {
+	@Test(priority = 1, dataProviderClass = DataProviderClass.class, dataProvider = "RegistroDatosFaltantesData")
+	public void registroDatosFaltantes(String nom, String ape, String id, String mail, String pass, String idtype,String dir, String tel, String bday) throws InterruptedException {
+		String expectedResult = "los campos requeridos";
 		
-		assertTrue(true);
+		String result;
+		Alert alerta;
+
+		driver.findElement(By.linkText("Sign Up")).click();
+
+		Select idTypeSelect = new Select(driver.findElement(ById.id("id_type")));
+
+		driver.findElement(ById.id("name")).sendKeys(nom);
+		driver.findElement(ById.id("lastname")).sendKeys(ape);
+		driver.findElement(ById.id("id")).sendKeys(id);
+		driver.findElement(ById.id("email")).sendKeys(mail);
+		driver.findElement(ById.id("password")).sendKeys(pass);
+		if(!idtype.equals("")){
+			idTypeSelect.selectByValue("Identity card");
+			idTypeSelect.selectByValue(idtype);
+		}
+		driver.findElement(ById.id("adress")).sendKeys(dir);
+		driver.findElement(ById.id("phone")).sendKeys(tel);
+		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[9]/input")).sendKeys(bday);;
+		
+		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[10]/button[2]")).click();
+		
+		Thread.sleep(500);
+		alerta = driver.switchTo().alert();
+		result = alerta.getText();
+		assertTrue(expectedResult.equals(result));
 	}
 
 	/**
@@ -219,18 +322,42 @@ public class CineAppSeleniumTests {
 	}
 
 	/**
-	 * Prueba que no acepte registros donde el tipo de los datos introducidos no conincidan 
-	 * con los tipos de los datos requeridos
+	 * Prueba que no acepte registros donde el tipo de los datos introducidos no
+	 * conincidan con los tipos de los datos requeridos
+	 * 
+	 * @throws InterruptedException
 	 */
-	@Test(priority = 2)
-	public void registroTiposRaros() {
+	@Test(priority = 2, dataProviderClass = DataProviderClass.class, dataProvider = "RegistroRaroData")
+	public void registroTiposRaros(String nom, String ape, String id, String mail, String pass, String idtype,
+			String dir, String tel, String bday) throws InterruptedException {
+		Alert alerta;
+		String expectedResult = "Invalid";
+		
+		driver.findElement(By.linkText("Sign Up")).click();
 
-		assertTrue("1"=="2");
+		Select idTypeSelect = new Select(driver.findElement(ById.id("id_type")));
+
+		driver.findElement(ById.id("name")).sendKeys(nom);
+		driver.findElement(ById.id("lastname")).sendKeys(ape);
+		driver.findElement(ById.id("id")).sendKeys(id);
+		driver.findElement(ById.id("email")).sendKeys(mail);
+		driver.findElement(ById.id("password")).sendKeys(pass);
+		idTypeSelect.selectByValue("Identity card");
+		idTypeSelect.selectByValue(idtype);
+		driver.findElement(ById.id("adress")).sendKeys(dir);
+		driver.findElement(ById.id("phone")).sendKeys(tel);
+		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[9]/input")).sendKeys(bday);;
+		
+		Thread.sleep(500);
+		alerta = driver.switchTo().alert();
+
+		String result = alerta.getText();
+		assertTrue(result.contains(expectedResult));
 	}
 
 	@AfterMethod
 	public void tearDown(){
-		//driver.quit();
+		driver.quit();
 	}
 
 
