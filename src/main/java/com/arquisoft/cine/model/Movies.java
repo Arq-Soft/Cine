@@ -30,7 +30,7 @@ public class Movies {
     private String roomCode;
     private String synopsis;
     private String image;
-
+    private int hour;
 
     public int getId() {
         return id;
@@ -114,6 +114,14 @@ public class Movies {
 
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
     }
 
 }
