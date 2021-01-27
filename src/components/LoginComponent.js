@@ -42,7 +42,6 @@ class LoginComponent extends Component {
     });
   }
   login() {
-    console.log(this.state.persona)
     const {username,password} = this.state.persona;
     if(username === "" || password === ""){
       alert('All fields are required')
@@ -51,7 +50,6 @@ class LoginComponent extends Component {
       .Login(username, password)
       .then((data) => {
         if(data){
-          console.log("Respuesta login" + data);
           this.props.setAuthToken(data);
           this.props.history.push({ pathname: "/home" });
           alert('Valid credentials')

@@ -245,7 +245,7 @@ class RegisterComponent extends Component {
                     }}
                     type="text"
                     className="form-control"
-                    placeholder="Phone"
+                    placeholder="Home phone"
                   />
                 </div>
 

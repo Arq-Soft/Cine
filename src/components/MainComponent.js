@@ -188,6 +188,7 @@ class MainComponents extends Component {
             >
               <CarouselIndicators
                 items={items}
+                
                 activeIndex={activeIndex}
                 onClickHandler={this.goToIndex}
               />
