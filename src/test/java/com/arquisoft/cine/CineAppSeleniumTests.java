@@ -188,9 +188,12 @@ public class CineAppSeleniumTests {
 
 	/**
 	 * Prueba el registro correcto de un cliente
+	 * 
+	 * @throws InterruptedException
 	 */
 	@Test(priority = 2, dataProviderClass = DataProviderClass.class, dataProvider = "RegistroNuevoData")
-	public void registroNuevo(String nom, String ape, String id, String mail, String pass, String idtype, String dir, String tel, String bday) {
+	public void registroNuevo(String nom, String ape, String id, String mail, String pass, String idtype, String dir,
+			String tel, String bday) throws InterruptedException {
 		String expectedResult = "Sign In";
 		
 		driver.findElement(By.linkText("Sign Up")).click();
@@ -209,7 +212,8 @@ public class CineAppSeleniumTests {
 		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[9]/input")).sendKeys(bday);;
 		
 		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[10]/button[2]")).click();
-
+		
+		Thread.sleep(150);
 		String result = driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[1]/h3")).getText();
 		
 		assertTrue(expectedResult.equals(result));
@@ -343,7 +347,7 @@ public class CineAppSeleniumTests {
 		
 		driver.findElement(ByXPath.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div[10]/button[2]")).click();
 		
-		///Thread.sleep(500);
+		Thread.sleep(150);
 		//alerta = driver.switchTo().alert();
 
 		//String result = alerta.getText();
@@ -358,10 +362,13 @@ public class CineAppSeleniumTests {
 
 	/**
 	 * Prueba que al consultar el catalogo sin inciar sesión, me pida hacerlo
+	 * 
+	 * @throws InterruptedException
 	 */
 	@Test(priority = 1)
-	public void reservaSinInicio() {
+	public void reservaSinInicio() throws InterruptedException {
 		driver.findElement(ByXPath.xpath("//*[@id=\"content\"]/div/div[1]/button[2]")).click();
+		Thread.sleep(150);
 		List<WebElement> elements = driver.findElements(By.xpath("//button[contains(.,\'Log in\')]"));
 		assertTrue(elements.size() > 1);
 	}
@@ -372,6 +379,7 @@ public class CineAppSeleniumTests {
 	@Test(priority = 6, dataProviderClass = DataProviderClass.class, dataProvider = "GreatPassData")
 	public void reservaConInicio(String id, String pass) throws InterruptedException {
 		Alert alerta;
+		String expectedResult = "Reserva creada";
 	
 		driver.findElement(By.linkText("Log in")).click();
 		driver.findElement(ByName.name("username")).sendKeys(id);
@@ -386,9 +394,19 @@ public class CineAppSeleniumTests {
 
 		List<WebElement> elements = driver.findElements(By.xpath("//button[contains(.,\'Reserve\')]"));
 		assertTrue(elements.size() > 1);
+		
+		elements.get(0).click();
+
+		driver.findElement(ByXPath.xpath("//*[@id=\"main\"]/div[2]/div[1]/ul/button")).click();
+		Thread.sleep(500);
+		alerta = driver.switchTo().alert();
+
+		String result = alerta.getText();
+		assertTrue(result.contains(expectedResult));
+
 	}
 
-
+	
 	@AfterMethod
 	public void tearDown(){
 		driver.quit();
