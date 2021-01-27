@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component } from "react";
 import { Media } from "reactstrap";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -8,6 +8,7 @@ import {
   Navbar,
   NavbarBrand,
 } from "reactstrap";
+import * as actionTypes from '../store/actions';
 
 class MoviesCatalogue extends Component {
   constructor(props) {
@@ -20,8 +21,10 @@ class MoviesCatalogue extends Component {
     this.catalogueMovies()
   }
 
-  navigatePayment() {
+  navigatePayment(movie) {
+    this.props.setMovies(movie)
     this.props.history.push({ pathname: "/reserve" });
+
   }
   navigateLogin() {
     this.props.history.push({ pathname: "/login" });
@@ -48,17 +51,6 @@ class MoviesCatalogue extends Component {
       this.setState({...this.state, Movies:data})
     })
     }
-
-  
-    /*
-      this.MoviesService
-      .getAll().then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });*/
-    
 
   render() {
     const catalogue = this.state.Movies.map((movie) => {
@@ -100,15 +92,18 @@ class MoviesCatalogue extends Component {
                       <h5>Genre: </h5>
                       <h6 className="movie-genre">{movie.genre} </h6>
                     </div>
+                    <div className="col-lg-3">
+                      <h5>Hour: </h5>
+                      <h6 className="movie-genre">{movie.hour} </h6>
+                    </div>
                   </div>
-                  
                 </div>
               </Media>
             </Media>
             {this.props.auth_token ? (
               <button
                 type="button"
-                onClick={this.navigatePayment.bind(this)}
+                onClick={this.navigatePayment.bind(this, movie)}
                 className="btn float-left login_btn"
               >
                 Reserve{" "}
@@ -173,11 +168,20 @@ class MoviesCatalogue extends Component {
 
 const mapStateToprops = (state) => {
   return {
-    auth_token: state.auth_token,
+    auth_token: state.auth_token
   };
 };
 
 
+const mapDispatchToProps = (dispath) => {
+  return {
+    setMovies: (value) => {
+      console.log({value});
+      dispath({ type: actionTypes.SET_MOVIE_TO_RESERVE, movie: value })
+    }
+  }  
+}
+
 export default connect(
-  mapStateToprops
+  mapStateToprops, mapDispatchToProps
 )(withRouter(MoviesCatalogue));

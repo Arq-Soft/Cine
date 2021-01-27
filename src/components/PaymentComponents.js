@@ -104,17 +104,7 @@ class PaymentComponent extends Component {
             <div className="payment-method">
               <h3>Select your payment method </h3>
             </div>
-
-            
-
-
-
-
-
-
-
-
-
+                  
           </div>
         </div>
         <div id="footer">
@@ -129,17 +119,10 @@ class PaymentComponent extends Component {
 const mapStateToprops = (state) => {
   return {
     auth_token: state.auth_token,
-  };
-};
-
-// ARREGLARLO PARA LOG OUT
-const mapDispatchToProps = (state) => {
-  return {
-    auth_token: state.auth_token,
+    movie_to_reserve: state.movie_to_reserve,
   };
 };
 
 export default connect(
-  mapStateToprops,
-  mapDispatchToProps
+  mapStateToprops
 )(withRouter(PaymentComponent));

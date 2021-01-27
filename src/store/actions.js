@@ -1,2 +1,3 @@
 export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
 export const SET_USER_NAME = "SET_USER_NAME";
+export const SET_MOVIE_TO_RESERVE = "SET_MOVIE_TO_RESERVE";
